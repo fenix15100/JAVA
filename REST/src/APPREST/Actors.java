@@ -48,7 +48,7 @@ public class Actors {
 			
 		}else if (first_name_v!=null&&last_name_v==null) {
 			
-			sql=sql+"  "
+			
 			
 			
 			
