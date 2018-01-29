@@ -58,11 +58,11 @@ public class PR10 {
 						
 						byte[] buffer=new byte[1024];
 						
-						int tamaño=-1;
+						int tam=-1;
 						
-						while((tamaño=reader.read(buffer))>-1) {
+						while((tam=reader.read(buffer))>-1) {
 							
-							writer.write(buffer,0,tamaño);
+							writer.write(buffer,0,tam);
 							
 							
 						}
@@ -120,11 +120,11 @@ public class PR10 {
 					
 					byte[] buffer=new byte[1024];
 					
-					int tamaño=-1;
+					int tam=-1;
 					
-					while((tamaño=reader.read(buffer))>-1) {
+					while((tam=reader.read(buffer))>-1) {
 						
-						writer.write(buffer,0,tamaño);
+						writer.write(buffer,0,tam);
 						
 						
 					}
@@ -157,11 +157,11 @@ public class PR10 {
 					
 					buffer=new byte[1024];
 					
-					tamaño=-1;
+					tam=-1;
 					
-					while((tamaño=reader.read(buffer))>-1) {
+					while((tam=reader.read(buffer))>-1) {
 						
-						writer.write(buffer,0,tamaño);
+						writer.write(buffer,0,tam);
 						
 						
 					}

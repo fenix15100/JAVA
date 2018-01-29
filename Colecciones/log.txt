@@ -1,0 +1,161 @@
+nov 21, 2017 3:23:50 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+nov 21, 2017 3:24:06 PM vc.BotigaProductes main
+GRAVE: Problema Greu
+java.util.InputMismatchException
+	at java.util.Scanner.throwFor(Unknown Source)
+	at java.util.Scanner.next(Unknown Source)
+	at java.util.Scanner.nextDouble(Unknown Source)
+	at vc.BotigaProductes.menu(BotigaProductes.java:81)
+	at vc.BotigaProductes.main(BotigaProductes.java:27)
+
+nov 21, 2017 3:24:06 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+nov 21, 2017 3:24:16 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+nov 21, 2017 3:25:05 PM vc.BotigaProductes main
+GRAVE: Problema Greu
+java.util.InputMismatchException
+	at java.util.Scanner.throwFor(Unknown Source)
+	at java.util.Scanner.next(Unknown Source)
+	at java.util.Scanner.nextDouble(Unknown Source)
+	at vc.BotigaProductes.menu(BotigaProductes.java:81)
+	at vc.BotigaProductes.main(BotigaProductes.java:27)
+
+nov 21, 2017 3:25:05 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 04, 2017 9:53:38 AM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 04, 2017 9:56:06 AM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 04, 2017 10:29:22 AM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 04, 2017 10:29:57 AM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 04, 2017 10:30:06 AM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 04, 2017 10:30:29 AM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 04, 2017 10:32:58 AM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 04, 2017 4:08:05 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 04, 2017 4:08:35 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 04, 2017 4:09:56 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 04, 2017 4:10:40 PM vc.BotigaProductes main
+GRAVE: Problema Greu
+java.util.InputMismatchException
+	at java.util.Scanner.throwFor(Unknown Source)
+	at java.util.Scanner.next(Unknown Source)
+	at java.util.Scanner.nextDouble(Unknown Source)
+	at vc.BotigaProductes.menu(BotigaProductes.java:88)
+	at vc.BotigaProductes.main(BotigaProductes.java:32)
+
+dic 04, 2017 4:10:40 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 04, 2017 4:10:59 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 04, 2017 4:12:12 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 04, 2017 4:12:46 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 04, 2017 4:22:52 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 04, 2017 4:22:57 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 04, 2017 4:23:15 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 04, 2017 4:23:47 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 04, 2017 4:24:48 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 04, 2017 4:25:09 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 04, 2017 4:25:21 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 04, 2017 4:25:53 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 04, 2017 4:26:01 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 04, 2017 4:26:33 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 04, 2017 4:26:43 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 04, 2017 4:27:10 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 05, 2017 2:41:44 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 05, 2017 2:43:25 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 05, 2017 2:45:04 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 05, 2017 3:01:43 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 05, 2017 3:02:12 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 05, 2017 3:02:21 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 05, 2017 3:03:16 PM vc.BotigaProductes main
+GRAVE: Problema Greu
+java.util.InputMismatchException
+	at java.util.Scanner.throwFor(Unknown Source)
+	at java.util.Scanner.next(Unknown Source)
+	at java.util.Scanner.nextDouble(Unknown Source)
+	at vc.BotigaProductes.menu(BotigaProductes.java:91)
+	at vc.BotigaProductes.main(BotigaProductes.java:35)
+
+dic 05, 2017 3:03:16 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 05, 2017 3:03:19 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 12, 2017 3:49:41 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 12, 2017 3:49:57 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 12, 2017 4:00:20 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 12, 2017 4:00:48 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+dic 12, 2017 4:00:55 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+dic 12, 2017 4:01:08 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+ene 09, 2018 3:33:12 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+ene 09, 2018 3:34:34 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+ene 09, 2018 4:07:08 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+ene 09, 2018 4:07:26 PM vc.BotigaProductes main
+GRAVE: Problema Greu
+java.util.InputMismatchException
+	at java.util.Scanner.throwFor(Unknown Source)
+	at java.util.Scanner.next(Unknown Source)
+	at java.util.Scanner.nextDouble(Unknown Source)
+	at vc.BotigaProductes.menu(BotigaProductes.java:125)
+	at vc.BotigaProductes.main(BotigaProductes.java:35)
+
+ene 09, 2018 4:07:26 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+ene 09, 2018 4:07:43 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+ene 11, 2018 6:57:29 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+ene 11, 2018 7:29:31 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+ene 11, 2018 7:29:44 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+ene 11, 2018 7:36:54 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+ene 11, 2018 7:37:05 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+ene 11, 2018 7:49:39 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+ene 11, 2018 7:49:46 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+ene 29, 2018 6:59:55 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+ene 29, 2018 7:00:02 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
