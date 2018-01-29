@@ -19,3 +19,5 @@ ene 29, 2018 7:53:05 PM vc.BotigaProductes main
 INFORMACIÓN: Start Log
 ene 29, 2018 8:43:16 PM vc.BotigaProductes main
 INFORMACIÓN: Start Log
+ene 29, 2018 8:45:48 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
