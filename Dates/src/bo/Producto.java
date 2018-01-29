@@ -1,6 +1,7 @@
 package bo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import vc.StockInsuficientException;
 
@@ -16,18 +17,22 @@ public abstract class Producto implements Serializable {
 	private String nom;
 	private double preu;
 	private int stock;
+	private LocalDate fecha_inicio;
+	private LocalDate fecha_final;
 	
 	//Contructores
 	
 	public Producto() {
-		this("","",0.0,0);
+		this("","",0.0,0,null,null);
 			
 	}
-	public Producto(String id, String nom, double preu, int stock) {
+	public Producto(String id, String nom, double preu, int stock,LocalDate fecha_inicio,LocalDate fecha_final) {
 		this.id = id;
 		this.nom = nom;
 		this.preu = preu;
 		this.stock=stock;
+		this.fecha_inicio=fecha_inicio;
+		this.fecha_final=fecha_final;
 	}
 	
 	
@@ -68,6 +73,19 @@ public abstract class Producto implements Serializable {
 		
 	}
 	
+	public LocalDate getFecha_inicio() {
+		return fecha_inicio;
+	}
+	public void setFecha_inicio(LocalDate fecha_inicio) {
+		this.fecha_inicio = fecha_inicio;
+	}
+	public LocalDate getFecha_final() {
+		return fecha_final;
+	}
+	public void setFecha_final(LocalDate fecha_final) {
+		this.fecha_final = fecha_final;
+	}
+	
 	
 	
 	public void quitarStock(int stock) throws StockInsuficientException {
@@ -96,7 +114,7 @@ public abstract class Producto implements Serializable {
 	//Imprime los parametros de la clase productos.
 	public void imprimir() {
 		
-		System.out.println("ID: "+id+" Nombre: "+nom+" Precio: "+preu+"Stock: "+stock);
+		System.out.println("ID: "+id+" Nombre: "+nom+" Precio: "+preu+"Stock: "+stock+" Fecha Inicio: "+fecha_inicio+" Fecha_final: "+fecha_final);
 	}
 	
 	

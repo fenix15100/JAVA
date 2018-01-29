@@ -1,5 +1,7 @@
 package bo;
 
+import java.time.LocalDate;
+
 public final class Joc extends Producto{
 	
 	//Parametros de clase
@@ -12,8 +14,8 @@ public final class Joc extends Producto{
 	private int id_proveedor;
 	
 	//Constructores
-	public Joc(String id, String nom, double preu, int stock, int edad_minima, int id_proveedor) {
-		super(id, nom, preu, stock);
+	public Joc(String id, String nom, double preu, int stock,LocalDate fecha_inicio,LocalDate fecha_final,int edad_minima, int id_proveedor) {
+		super(id, nom, preu, stock,fecha_inicio,fecha_final);
 		this.edad_minima=edad_minima;
 		this.id_proveedor=id_proveedor;
 		
@@ -21,7 +23,7 @@ public final class Joc extends Producto{
 	
 	
 	public Joc() {
-		this("","",0.0,0,0,0);
+		this("","",0.0,0,null,null,0,0);
 		
 	}
 

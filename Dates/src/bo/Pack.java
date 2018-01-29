@@ -1,5 +1,6 @@
 package bo;
 
+import java.time.LocalDate;
 import java.util.TreeSet;
 
 public final class Pack extends Producto {
@@ -16,15 +17,15 @@ public final class Pack extends Producto {
 
 	
 	//Constructores
-	public Pack(String id, String nom, double preu,int stock,TreeSet<String> ListaJuegos,double descuento) {
-		super(id, nom, preu, stock);
+	public Pack(String id, String nom, double preu,int stock,LocalDate fecha_inicio,LocalDate fecha_final,TreeSet<String> ListaJuegos,double descuento) {
+		super(id, nom, preu, stock,fecha_inicio,fecha_final);
 		this.ListaJuegos=ListaJuegos;
 		this.descuento=descuento;
 		
 		
 	}
 	public Pack() {
-		this("","",0.0,0,null,0.0);
+		this("","",0.0,0,null,null,null,0.0);
 		
 	}
 	

@@ -8,7 +8,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.TreeSet;
+import java.util.Formatter;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -21,6 +25,7 @@ import dao.*;
 public class BotigaProductes {
 
 	private static Scanner teclado;
+	private static DateTimeFormatter parse_date=null;
 
 	public static void main(String[] args) throws SecurityException, IOException {
 
@@ -59,8 +64,11 @@ public class BotigaProductes {
 		
 		lista_productos.loadData();
 	
-		
 		teclado = new Scanner(System.in);
+		
+		parse_date=DateTimeFormatter.ofPattern("dd/mm/yyyy");
+		
+		
 		
 		int opcion;
 		
@@ -93,6 +101,17 @@ public class BotigaProductes {
 						System.out.println("Dime El Stock del juego");
 						int stock=teclado.nextInt();
 						
+						System.out.println("Dime la fecha de ingreso en el iventario");
+						String fecha_ini_string=teclado.next();
+						
+						LocalDate fecha_ini=LocalDate.parse(fecha_ini_string, parse_date);
+						
+						System.out.println("Dime la fecha de descatalogado en el iventario");
+						String fecha_desca_string=teclado.next();
+						
+						LocalDate fecha_desca=LocalDate.parse(fecha_desca_string, parse_date);
+						
+						
 						System.out.println("Dime el PEGI del Juego");
 						int edad_minima=teclado.nextInt();
 						
@@ -100,7 +119,7 @@ public class BotigaProductes {
 						int id_proveedor=teclado.nextInt();
 						
 						
-						Joc productemp=new Joc(id, nom, preu,stock,edad_minima, id_proveedor);
+						Joc productemp=new Joc(id, nom, preu,stock,fecha_ini,fecha_desca,edad_minima, id_proveedor);
 						
 						if(!lista_productos.addProducto(productemp)) {
 							System.out.println("Esta ID ya existe en el sistema");
@@ -127,6 +146,16 @@ public class BotigaProductes {
 						System.out.println("Dime El stock de pack");
 						int stock=teclado.nextInt();
 						
+						System.out.println("Dime la fecha de ingreso en el iventario");
+						String fecha_ini_string=teclado.next();
+						
+						LocalDate fecha_ini=LocalDate.parse(fecha_ini_string, parse_date);
+						
+						System.out.println("Dime la fecha de descatalogado en el iventario");
+						String fecha_desca_string=teclado.next();
+						
+						LocalDate fecha_desca=LocalDate.parse(fecha_desca_string, parse_date);
+						
 						System.out.println("Cuantos juegos quieres incluir en el pack? ");
 						int cantidad=teclado.nextInt();
 						
@@ -150,7 +179,7 @@ public class BotigaProductes {
 						System.out.println("Cuantos descuento tiene el pack? ");
 						double descuento=teclado.nextDouble();
 						
-						Pack productemp=new Pack(id,nom,preu,stock,ListaJuegos,descuento);
+						Pack productemp=new Pack(id,nom,preu,stock,fecha_ini,fecha_desca,ListaJuegos,descuento);
 						
 						if(!lista_productos.addProducto(productemp)) {
 							System.out.println("Esta ID ya existe en el sistema");
@@ -186,13 +215,6 @@ public class BotigaProductes {
 						
 						
 					
-					
-					
-					
-					
-					
-					
-					
 					break;
 			
 					//Opcion que permite modificar un producto del sistema, para ello
@@ -225,6 +247,16 @@ public class BotigaProductes {
 									System.out.println("Dime El precio del juego");
 									double preu=teclado.nextDouble();
 									
+									System.out.println("Dime la fecha de ingreso en el iventario");
+									String fecha_ini_string=teclado.next();
+									
+									LocalDate fecha_ini=LocalDate.parse(fecha_ini_string, parse_date);
+									
+									System.out.println("Dime la fecha de descatalogado en el iventario");
+									String fecha_desca_string=teclado.next();
+									
+									LocalDate fecha_desca=LocalDate.parse(fecha_desca_string, parse_date);
+									
 									System.out.println("Dime el PEGI del Juego");
 									int edad_minima=teclado.nextInt();
 									
@@ -235,6 +267,8 @@ public class BotigaProductes {
 									joctemp.setPreu(preu);
 									joctemp.setEdad_minima(edad_minima);
 									joctemp.setId_proveedor(id_proveedor);
+									joctemp.setFecha_inicio(fecha_ini);
+									joctemp.setFecha_final(fecha_desca);
 									
 									lista_productos.updateProducto(joctemp);
 									
@@ -264,6 +298,18 @@ public class BotigaProductes {
 								
 								System.out.println("Dime El precio del pack");
 								double preu=teclado.nextDouble();
+								
+								
+								System.out.println("Dime la fecha de ingreso en el iventario");
+								String fecha_ini_string=teclado.next();
+								
+								LocalDate fecha_ini=LocalDate.parse(fecha_ini_string, parse_date);
+								
+								System.out.println("Dime la fecha de descatalogado en el iventario");
+								String fecha_desca_string=teclado.next();
+								
+								LocalDate fecha_desca=LocalDate.parse(fecha_desca_string, parse_date);
+								
 								
 								System.out.println("Dime el descuento del pack");
 								double descuento=teclado.nextInt();
@@ -316,6 +362,8 @@ public class BotigaProductes {
 							packtemp.setNom(nom);
 							packtemp.setPreu(preu);
 							packtemp.setDescuento(descuento);
+							packtemp.setFecha_inicio(fecha_ini);
+							packtemp.setFecha_final(fecha_desca);
 							lista_productos.updateProducto(packtemp);	
 							}
 							
