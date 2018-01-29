@@ -66,7 +66,7 @@ public class BotigaProductes {
 	
 		teclado = new Scanner(System.in);
 		
-		parse_date=DateTimeFormatter.ofPattern("dd/mm/yyyy");
+		parse_date=DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
 		
 		
@@ -74,7 +74,7 @@ public class BotigaProductes {
 		
 		//Menu Do while con la acciones de la interfaz de usuario
 		do {
-			System.out.println("1.Afegir Producte\n2.Buscar Producte\n3.Modificar Producte\n4.Añadir Stock\n5.Quitar Stock\n6.Eliminar Producte\n7.Mostrar Productos\n8.CrearFichero de Carga automatica\n9.ListasOrdenadas\n10.Salir");
+			System.out.println("1.Afegir Producte\n2.Buscar Producte\n3.Modificar Producte\n4.Añadir Stock\n5.Quitar Stock\n6.Eliminar Producte\n7.Mostrar Productos\n8.CrearFichero de Carga automatica\n9.ListasOrdenadas\n10.Mostrar Descatalogados\n11.Salir");
 			opcion=teclado.nextInt();
 			
 			switch (opcion) {
@@ -627,10 +627,21 @@ public class BotigaProductes {
                 }
 				break;
 			case 10:
+				System.out.println("Introduce una Fecha para ver los productos descatalogados dd/mm/yyyy");
+				String fecha_s=teclado.next();
+				LocalDate fecha=LocalDate.parse(fecha_s, parse_date);
 				
+				lista_productos.imprimirDescatalogados(fecha);
+				
+				
+				
+				break;
+			
+			case 11:
 				System.out.println("Guardando los cambios en el sistema");
 				lista_productos.saveData();
 				System.out.println("Hasta Otra");
+				
 				
 				break;
 				
@@ -643,7 +654,7 @@ public class BotigaProductes {
 			
 		
 					
-		}while(opcion!=10);	
+		}while(opcion!=11);	
 
 	}
 }

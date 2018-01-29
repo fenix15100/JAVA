@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -196,6 +198,33 @@ public class Productos {
                 }
                 break;
         }
+		
+		
+		
+	}
+	
+	
+	public void imprimirDescatalogados(LocalDate fecha) {
+		
+	
+		for(Producto p:lista_productos.values()) {
+			
+			if(p.getFecha_final().compareTo(fecha)<0) {
+				p.imprimir();
+				
+				Period periodo=Period.between(p.getFecha_final(),fecha);
+				System.out.println("El producto fue descatalogado hace "+periodo.getDays()+" Dias");
+			}
+			else continue;
+			
+			
+			
+			
+			
+		}
+		
+		
+		
 		
 		
 		
