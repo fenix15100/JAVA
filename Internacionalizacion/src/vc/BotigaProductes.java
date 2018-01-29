@@ -77,7 +77,7 @@ public class BotigaProductes {
 		
 		int opcion;
 		
-		//Menu Do while con la acciones de la interfaz de usuario
+		//Menu Do while con la acciones de la interfaz de usuario kkkk
 		do {
 			System.out.println(texts.getString("0000"));
 			System.out.println(texts.getString("0001"));
