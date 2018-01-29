@@ -1,0 +1,19 @@
+ene 29, 2018 7:51:29 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+ene 29, 2018 7:52:26 PM vc.BotigaProductes main
+GRAVE: Problema Greu
+java.time.format.DateTimeParseException: Text '01/01/2018' could not be parsed: Unable to obtain LocalDate from TemporalAccessor: {Year=2018, MinuteOfHour=1, DayOfMonth=1},ISO of type java.time.format.Parsed
+	at java.time.format.DateTimeFormatter.createError(Unknown Source)
+	at java.time.format.DateTimeFormatter.parse(Unknown Source)
+	at java.time.LocalDate.parse(Unknown Source)
+	at vc.BotigaProductes.menu(BotigaProductes.java:107)
+	at vc.BotigaProductes.main(BotigaProductes.java:40)
+Caused by: java.time.DateTimeException: Unable to obtain LocalDate from TemporalAccessor: {Year=2018, MinuteOfHour=1, DayOfMonth=1},ISO of type java.time.format.Parsed
+	at java.time.LocalDate.from(Unknown Source)
+	at java.time.format.Parsed.query(Unknown Source)
+	... 4 more
+
+ene 29, 2018 7:52:26 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log
+ene 29, 2018 7:53:05 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
