@@ -71,7 +71,7 @@ public class BotigaProductes {
 		
 		//Intenacionalizacion
 		
-		Locale localeFormat=Locale.getDefault(Category.FORMAT);
+		//Locale localeFormat=Locale.getDefault(Category.FORMAT);
 		Locale localeDisplay=Locale.getDefault(Category.DISPLAY);
 		ResourceBundle texts=ResourceBundle.getBundle("locale.Texts", localeDisplay);
 		
