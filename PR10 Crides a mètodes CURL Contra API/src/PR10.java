@@ -20,7 +20,7 @@ import org.json.*;
 
 public class PR10 {
 	static Scanner teclado=null;
-	static String token="4351aa3e7975d758c6fdb5c50d281c5e217906aa";
+	static String token="HERETOKEN";
 	
 
 	public static void main(String[] args) {
@@ -58,11 +58,11 @@ public class PR10 {
 						
 						byte[] buffer=new byte[1024];
 						
-						int tamaño=-1;
+						int tamaÃ±o=-1;
 						
-						while((tamaño=reader.read(buffer))>-1) {
+						while((tamaÃ±o=reader.read(buffer))>-1) {
 							
-							writer.write(buffer,0,tamaño);
+							writer.write(buffer,0,tamaÃ±o);
 							
 							
 						}
@@ -120,11 +120,11 @@ public class PR10 {
 					
 					byte[] buffer=new byte[1024];
 					
-					int tamaño=-1;
+					int tamaÃ±o=-1;
 					
-					while((tamaño=reader.read(buffer))>-1) {
+					while((tamaÃ±o=reader.read(buffer))>-1) {
 						
-						writer.write(buffer,0,tamaño);
+						writer.write(buffer,0,tamaÃ±o);
 						
 						
 					}
@@ -157,11 +157,11 @@ public class PR10 {
 					
 					buffer=new byte[1024];
 					
-					tamaño=-1;
+					tamaÃ±o=-1;
 					
-					while((tamaño=reader.read(buffer))>-1) {
+					while((tamaÃ±o=reader.read(buffer))>-1) {
 						
-						writer.write(buffer,0,tamaño);
+						writer.write(buffer,0,tamaÃ±o);
 						
 						
 					}
