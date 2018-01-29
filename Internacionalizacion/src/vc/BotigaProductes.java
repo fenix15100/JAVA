@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.TreeSet;
+import java.util.Locale;
+import java.util.Locale.Category;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -66,13 +69,27 @@ public class BotigaProductes {
 		
 		parse_date=DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
+		//Intenacionalizacion
 		
+		Locale localeFormat=Locale.getDefault(Category.FORMAT);
+		Locale localeDisplay=Locale.getDefault(Category.DISPLAY);
+		ResourceBundle texts=ResourceBundle.getBundle("locale.Texts", localeDisplay);
 		
 		int opcion;
 		
 		//Menu Do while con la acciones de la interfaz de usuario
 		do {
-			System.out.println("1.Afegir Producte\n2.Buscar Producte\n3.Modificar Producte\n4.Añadir Stock\n5.Quitar Stock\n6.Eliminar Producte\n7.Mostrar Productos\n8.CrearFichero de Carga automatica\n9.ListasOrdenadas\n10.Mostrar Descatalogados\n11.Salir");
+			System.out.println(texts.getString("0000"));
+			System.out.println(texts.getString("0001"));
+			System.out.println(texts.getString("0002"));
+			System.out.println(texts.getString("0003"));
+			System.out.println(texts.getString("0004"));
+			System.out.println(texts.getString("0005"));
+			System.out.println(texts.getString("0006"));
+			System.out.println(texts.getString("0007"));
+			System.out.println(texts.getString("0008"));
+			System.out.println(texts.getString("0009"));
+			System.out.println(texts.getString("0010"));
 			opcion=teclado.nextInt();
 			
 			switch (opcion) {
