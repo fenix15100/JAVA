@@ -27,50 +27,45 @@ public class Actors {
 	@Path("/")
 	@Produces("application/json")
 	
-	public String showAll(@QueryParam("first_name_v") String first_name_v, @QueryParam("last_name_v") String last_name_v,@QueryParam("skip") int skip,@QueryParam("take") int take ) throws NamingException, SQLException {
-		
-		
+	public String showAll(@QueryParam("first_name_v") String first_name_v, @QueryParam("last_name_v") 
+		   String last_name_v,@QueryParam("skip") int skip,@QueryParam("take") int take ) throws NamingException, SQLException {
 		
 		InitialContext ctx=new InitialContext();
 		DataSource ds=(DataSource)ctx.lookup("jdbc/driver");
 		Connection conn=ds.getConnection();
-		
+		Statement sta=null;
 		ResultSet rs=null;
 		ArrayList<Actor> actores=new ArrayList<Actor>();
 		Gson serializer=new GsonBuilder().setPrettyPrinting().create();
 		
 		String sql="SELECT * FROM actor WHERE actor_id>="+skip;
 		
-		System.out.println(sql);
 		
 		if(first_name_v==null&&last_name_v==null) {
-			sql=sql;
-			
-			
+		
+				
 			
 		}else if (first_name_v!=null&&last_name_v==null) {
 			
 			sql=sql+" AND first_name LIKE '"+first_name_v+"'";
 			
 			
-			
-			
-			
-			
-			
 		}else if (first_name_v==null&&last_name_v!=null) {
 			sql=sql+" AND last_name LIKE '"+last_name_v+"'";
 			
-			
-			
-			
-			
+				
 			
 		}else if(first_name_v!=null&&last_name_v!=null){
-			sql=sql+" AND last_name="+last_name_v+" AND";
-			
+			sql=sql+" AND last_name LIKE '"+last_name_v+"' AND first_name LIKE '"+first_name_v+"'";
 			
 		}
+		if(take>0) {
+			
+			sql=sql+" LIMIT "+take;
+		}
+		
+		sta=conn.createStatement();
+		rs=sta.executeQuery(sql);
 		
 		while(rs.next()) {
 			int id=rs.getInt("actor_id");
