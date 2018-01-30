@@ -30,7 +30,7 @@ public class Actors {
 	public String showAll(@QueryParam("first_name_v") String first_name_v, @QueryParam("last_name_v") String last_name_v,@QueryParam("skip") int skip,@QueryParam("take") int take ) throws NamingException, SQLException {
 		
 		
-		//System.out.println(first_name_v+"------------"+last_name_v);
+		
 		InitialContext ctx=new InitialContext();
 		DataSource ds=(DataSource)ctx.lookup("jdbc/driver");
 		Connection conn=ds.getConnection();
@@ -40,6 +40,8 @@ public class Actors {
 		Gson serializer=new GsonBuilder().setPrettyPrinting().create();
 		
 		String sql="SELECT * FROM actor WHERE actor_id>="+skip;
+		
+		System.out.println(sql);
 		
 		if(first_name_v==null&&last_name_v==null) {
 			sql=sql;
