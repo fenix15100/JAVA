@@ -56,6 +56,8 @@ public class IniciBotonsController extends Application {
 	 public void btnProductos(ActionEvent event) {
 		 
 		 
+		 
+		 
 
 	 }
 
