@@ -25,3 +25,7 @@ dsdsene 30, 2018 3:46:49 PM vc.BotigaProductes main
 INFORMACIÓN: Start Log
 ene 30, 2018 3:47:03 PM vc.BotigaProductes main
 DETALLADO: Fin Del Log
+ene 30, 2018 4:33:01 PM vc.BotigaProductes main
+INFORMACIÓN: Start Log
+ene 30, 2018 4:33:10 PM vc.BotigaProductes main
+DETALLADO: Fin Del Log

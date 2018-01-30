@@ -4,13 +4,12 @@
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane fx:id="root" prefHeight="438.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="IniciBotonsController">
+<AnchorPane fx:id="root" prefHeight="438.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.IniciBotonsController">
    <effect>
       <ColorAdjust hue="0.14" saturation="0.36" />
    </effect>
    <children>
-      <Button layoutX="198.0" layoutY="175.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="105.0" text="%button.productos" textFill="#a84a4a" />
-      <Button layoutX="370.0" layoutY="380.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="105.0" text="%button.salir" textFill="#a84a4a" />
+      <Button fx:id="btnProductos" layoutX="198.0" layoutY="175.0" mnemonicParsing="false" onAction="#btnProductos" prefHeight="38.0" prefWidth="105.0" text="%button.productos" textFill="#a84a4a" />
+      <Button fx:id="btnSalir" layoutX="370.0" layoutY="380.0" mnemonicParsing="false" onAction="#btnSalir" prefHeight="38.0" prefWidth="105.0" text="%button.salir" textFill="#a84a4a" />
    </children>
 </AnchorPane>
