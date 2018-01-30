@@ -9,7 +9,7 @@
       <ColorAdjust hue="0.14" saturation="0.36" />
    </effect>
    <children>
-      <Button fx:id="btnProductos" layoutX="198.0" layoutY="175.0" mnemonicParsing="false" onAction="#btnProductos" prefHeight="38.0" prefWidth="105.0" text="%button.productos" textFill="#a84a4a" />
-      <Button fx:id="btnSalir" layoutX="370.0" layoutY="380.0" mnemonicParsing="false" onAction="#btnSalir" prefHeight="38.0" prefWidth="105.0" text="%button.salir" textFill="#a84a4a" />
+      <Button fx:id="btnProductos" layoutX="198.0" layoutY="200.0" mnemonicParsing="false" onAction="#btnProductos" prefHeight="38.0" prefWidth="105.0" text="%button.productos" textFill="#a84a4a" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="200.0" />
+      <Button fx:id="btnSalir" layoutX="370.0" layoutY="380.0" mnemonicParsing="false" onAction="#btnSalir" prefHeight="38.0" prefWidth="105.0" text="%button.salir" textFill="#a84a4a" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
    </children>
 </AnchorPane>
