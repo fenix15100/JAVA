@@ -50,6 +50,8 @@ public class Actors {
 			
 		}else if (first_name_v!=null&&last_name_v==null) {
 			
+			sql=sql+" AND first_name LIKE '"+first_name_v+"'";
+			
 			
 			
 			
@@ -57,23 +59,15 @@ public class Actors {
 			
 			
 		}else if (first_name_v==null&&last_name_v!=null) {
-			PreparedStatement stat=conn.prepareStatement("SELECT * FROM actor WHERE ? LIKE ?");
-			stat.setString(1,"last_name" );
-			stat.setString(2, last_name_v);
-			rs=stat.executeQuery();
+			sql=sql+" AND last_name LIKE '"+last_name_v+"'";
 			
 			
 			
 			
 			
 			
-		}else {
-			PreparedStatement stat=conn.prepareStatement("SELECT * FROM actor WHERE ? LIKE ? AND ? LIKE ?");
-			stat.setString(1,"last_name" );
-			stat.setString(2, last_name_v);
-			stat.setString(3,"first_name" );
-			stat.setString(4, first_name_v);
-			rs=stat.executeQuery();
+		}else if(first_name_v!=null&&last_name_v!=null){
+			sql=sql+" AND last_name="+last_name_v+" AND";
 			
 			
 		}
