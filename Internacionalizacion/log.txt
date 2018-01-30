@@ -22,3 +22,4 @@ INFORMACIÓN: Start Log
 ene 29, 2018 8:45:48 PM vc.BotigaProductes main
 DETALLADO: Fin Del Log
 dsdsd
+ddd
