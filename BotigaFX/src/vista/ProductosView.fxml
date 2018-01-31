@@ -21,6 +21,6 @@
       <Label layoutX="7.0" layoutY="398.0" prefHeight="18.0" prefWidth="150.0" text="Tipo" />
       <ComboBox fx:id="tipoComboBox" layoutX="175.0" layoutY="394.0" prefWidth="150.0" promptText="Elije" />
       <Label layoutX="7.0" layoutY="238.0" prefHeight="18.0" prefWidth="57.0" text="Precio" />
-      <TextField fx:id="precioTexfield" layoutX="76.0" layoutY="235.0" prefHeight="25.0" prefWidth="304.0" />
+      <TextField fx:id="precioTextfield" layoutX="76.0" layoutY="235.0" prefHeight="25.0" prefWidth="304.0" />
    </children>
 </AnchorPane>

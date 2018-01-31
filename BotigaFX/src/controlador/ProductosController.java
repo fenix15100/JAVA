@@ -2,8 +2,6 @@ package controlador;
 
 
 import java.io.IOException;
-import java.time.LocalDate;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -13,7 +11,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.converter.LocalDateStringConverter;
+
 import modelo.*;
 
 public class ProductosController {
@@ -36,6 +34,7 @@ public class ProductosController {
     
     @FXML
     private TextField precioTextfield;
+    
 
     @FXML
     private DatePicker I_catalogoDatePicker;
@@ -63,7 +62,7 @@ public class ProductosController {
 		Joc j=new Joc("1","parchis",precio,10,null,null,0,0);
 		dao_productos.addProducto(j);
 		
-		System.out.println(Double.toString(j.getPreu()));
+		
 		
 		
 		
@@ -94,7 +93,7 @@ public class ProductosController {
 					Joc juego=(Joc)dao_productos.searchProducto(idTextfield.getText());
 					nomTexfield.setText(juego.getNom());
 					stockTexfield.setText(String.valueOf(juego.getStock()));
-					precioTextfield.setText(Double.toString(juego.getPreu()));
+					precioTextfield.setText(String.valueOf(juego.getPreu()));
 					I_catalogoDatePicker.setValue(juego.getFecha_inicio());
 					f_catalogoDatePicker.setValue(juego.getFecha_final());
 					
@@ -103,7 +102,7 @@ public class ProductosController {
 					Pack pack=(Pack)dao_productos.searchProducto(idTextfield.getText());
 					nomTexfield.setText(pack.getNom());
 					stockTexfield.setText(String.valueOf(pack.getStock()));
-					precioTextfield.setText(Double.toString(pack.getPreu()));
+					precioTextfield.setText(String.valueOf(pack.getPreu()));
 					I_catalogoDatePicker.setValue(pack.getFecha_inicio());
 					f_catalogoDatePicker.setValue(pack.getFecha_final());
 				}
@@ -114,21 +113,22 @@ public class ProductosController {
 			
 			
 		}else {
-			limpiarFormulario();
+			//Nuevo registro
+			nomTexfield.clear();
+			stockTexfield.clear();
+			I_catalogoDatePicker.getEditor().clear();
+			f_catalogoDatePicker.getEditor().clear();
+			tipoComboBox.setValue("Elige");
+			precioTextfield.clear();
+			
+			
+			
+			
+			
 			
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
