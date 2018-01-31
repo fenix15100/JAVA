@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
-	<!-- TODO Add Nodes -->
+<AnchorPane fx:id="root" minHeight="600.0" minWidth="450.0" style="-fx-background-color: whitesmoke;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ProductosController">
+   <children>
+      <Label layoutX="7.0" layoutY="63.0" prefHeight="18.0" prefWidth="30.0" text="ID" />
+      <TextField fx:id="idTextfield" layoutX="76.0" layoutY="59.0" prefHeight="25.0" prefWidth="304.0" />
+      <Label layoutX="7.0" layoutY="122.0" prefHeight="18.0" prefWidth="57.0" text="Nombre" />
+      <TextField fx:id="nomTexfield" layoutX="76.0" layoutY="119.0" prefHeight="25.0" prefWidth="304.0" />
+      <Label layoutX="7.0" layoutY="181.0" prefHeight="18.0" prefWidth="57.0" text="Stock" />
+      <TextField fx:id="stockTexfield" editable="false" layoutX="76.0" layoutY="178.0" prefHeight="25.0" prefWidth="304.0" />
+      <Label layoutX="7.0" layoutY="247.0" prefHeight="18.0" prefWidth="150.0" text="Fecha Inicio Catalogo" />
+      <DatePicker fx:id="I_catalogoDatePicker" layoutX="175.0" layoutY="243.0" />
+      <DatePicker fx:id="f_catalogoDatePicker" layoutX="175.0" layoutY="277.0" />
+      <Label layoutX="7.0" layoutY="281.0" prefHeight="18.0" prefWidth="150.0" text="Fecha Inicio Catalogo" />
+      <Label layoutX="7.0" layoutY="310.0" prefHeight="18.0" prefWidth="150.0" text="Tipo" />
+      <ComboBox fx:id="tipoComboBox" layoutX="175.0" layoutY="307.0" prefWidth="150.0" promptText="Elije" />
+   </children>
 </AnchorPane>
