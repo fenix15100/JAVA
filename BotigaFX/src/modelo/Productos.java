@@ -22,9 +22,11 @@ public class Productos {
 	@SuppressWarnings("unchecked")
 	public void loadData() throws IOException {
 		try {
+			System.out.println("Cargando datos");
 			reader=new ObjectInputStream(new FileInputStream("Productos.dat"));
 			
 			lista_productos=(TreeMap<String, Producto>)reader.readObject();
+		
 				
 				
 			
@@ -49,9 +51,12 @@ public class Productos {
 	
 	public void saveData() throws IOException {
 		try {
+			
+			System.out.println("Guardando Datos");
 			writer=new ObjectOutputStream(new FileOutputStream("Productos.dat"));
 			
 			writer.writeObject(lista_productos);
+		
 		} catch (FileNotFoundException e) {
 			
 			System.out.println(e.getMessage());

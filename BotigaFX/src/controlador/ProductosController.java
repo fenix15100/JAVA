@@ -1,6 +1,8 @@
 package controlador;
 
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -12,6 +14,7 @@ import modelo.*;
 public class ProductosController {
 	
 	private Stage ventana;
+	private Productos dao_productos=new Productos();
 	
 	//Inyecion de los elementos de la Vista
 	@FXML
@@ -39,16 +42,15 @@ public class ProductosController {
     
     
 	
-	@FXML private void initialize() {
+	@FXML private void initialize() throws IOException {
 		
 		//Inyecto en el ComboBox dos Values.
 		tipoComboBox.getItems().addAll("Joc","Pack");
 		
+		//Instancio el DAO Productos y cargo la persitencia de datos
 		
+		dao_productos.loadData();
 		
-		
-		
-	
 		
 	}
 	
@@ -60,8 +62,10 @@ public class ProductosController {
 		this.ventana = ventana;
 	}
 
-	public void salir() {
-		//HERE SAVE Productos and exit
+	public void salir() throws IOException {
+		
+		//Guarda la estructura de datos en un fichero y cierra el escenario
+		dao_productos.saveData();
 		ventana.close();
 		
 	}

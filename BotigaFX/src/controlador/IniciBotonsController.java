@@ -83,11 +83,14 @@ public class IniciBotonsController extends Application {
 			//Handle para el evento de cierre del escenario
 			escenarioProductos.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				public void handle(WindowEvent we) {
-					productoControler.salir();
+					try {
+						productoControler.salir();
+					} catch (IOException e) {
+						
+						e.printStackTrace();
+					}
 				}
 			});   
-		 
-		 
 		 
 
 	 }
