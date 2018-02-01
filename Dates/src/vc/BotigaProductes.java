@@ -10,9 +10,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
+
 import java.util.TreeSet;
-import java.util.Formatter;
+
 import java.util.Scanner;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
