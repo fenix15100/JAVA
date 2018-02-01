@@ -1,12 +1,12 @@
 package controlador;
 
+//http://code.makery.ch/blog/javafx-8-event-handling-examples/
+
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -21,7 +21,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import modelo.*;
 
 public class ProductosController {
@@ -91,14 +90,112 @@ public class ProductosController {
 
 		// Inyecto en el ComboBox dos Values.
 		tipoComboBox.getItems().addAll("Joc", "Pack");
-
+		
+		//Desabilito la interfaz menos el campo ID
+		
+		nomTexfield.setDisable(true);
+		stockTexfield.setDisable(true);
+		I_catalogoDatePicker.setDisable(true);
+		f_catalogoDatePicker.setDisable(true);
+		tipoComboBox.setDisable(true);
+		precioTextfield.setDisable(true);
+		datosTabpane.setDisable(true);
+		
 		// Instancio el DAO Productos y cargo la persitencia de datos
 		dao_productos.loadData();
 
 	}
 
+	
+	@FXML
+	private void onKeyPressedId(KeyEvent e) throws IOException {
+		
+			//Evento principal
+		if (e.getCode() == KeyCode.ENTER || e.getCode() == KeyCode.TAB) {
+			
+			//Habilito la interfaz para intereactuar con ella (Insert,Update,Show)
+			
+			nomTexfield.setDisable(false);
+			stockTexfield.setDisable(false);
+			I_catalogoDatePicker.setDisable(false);
+			f_catalogoDatePicker.setDisable(false);
+			tipoComboBox.setDisable(false);
+			precioTextfield.setDisable(false);
+			datosTabpane.setDisable(false);
+			
+				
+			//Si ID existe cargo los datos del producto
+			if (dao_productos.searchProducto(idTextfield.getText()) != null) {
+				if (dao_productos.searchProducto(idTextfield.getText()) instanceof Joc) {
+					Joc juego = (Joc) dao_productos.searchProducto(idTextfield.getText());
+					nomTexfield.setText(juego.getNom());
+					stockTexfield.setText(String.valueOf(juego.getStock()));
+					precioTextfield.setText(String.valueOf(juego.getPreu()));
+					I_catalogoDatePicker.setValue(juego.getFecha_inicio());
+					f_catalogoDatePicker.setValue(juego.getFecha_final());
+					tipoComboBox.setValue("Joc");
+					edadminimaTextfield.setText(String.valueOf(juego.getEdad_minima()));
+					proveedorTextField.setText(String.valueOf(juego.getId_proveedor()));
+					
+					//Desabilito el campo combo para que al modificar el producto no se elija
+					//otro tipo de producto (Eso seria un nuevo producto no una modificacion)
+					tipoComboBox.setDisable(true);
+					//Habilito la Tab correspondiente al producto
+					packTab.setDisable(true);
+					jocTab.setDisable(false);
+					//Abro el Tab que toca
+					datosTabpane.getSelectionModel().select(jocTab);
+				} else {
+					Pack pack = (Pack) dao_productos.searchProducto(idTextfield.getText());
+					nomTexfield.setText(pack.getNom());
+					stockTexfield.setText(String.valueOf(pack.getStock()));
+					precioTextfield.setText(String.valueOf(pack.getPreu()));
+					I_catalogoDatePicker.setValue(pack.getFecha_inicio());
+					f_catalogoDatePicker.setValue(pack.getFecha_final());
+					descuentoTextField.setText(String.valueOf(pack.getDescuento()));
+					listadejuegosTextfield.setText(pack.listajuegosToString());
+					tipoComboBox.setValue("Pack");
+					
+					//Desabilito el campo combo para que al modificar el producto no se elija
+					//otro tipo de producto (Eso seria un nuevo producto no una modificacion)
+					tipoComboBox.setDisable(true);
+					//Habilito la Tab correspondiente al producto
+					jocTab.setDisable(true);
+					packTab.setDisable(false);
+					//Abro el Tab que toca
+					datosTabpane.getSelectionModel().select(packTab);
+
+				}
+
+			} else {
+				// Si no existe Nuevo registro limpio formulario menos ID
+				nomTexfield.clear();
+				stockTexfield.clear();
+				I_catalogoDatePicker.getEditor().clear();
+				f_catalogoDatePicker.getEditor().clear();
+				//Vuelvo a habilitar el campo combo y lo seteo por defecto
+				tipoComboBox.setDisable(false);
+				tipoComboBox.setValue("Elije");
+				
+				precioTextfield.clear();
+				edadminimaTextfield.clear();
+				proveedorTextField.clear();
+				descuentoTextField.clear();
+				listadejuegosTextfield.clear();
+				
+				//quito el tab pane a la espera del evento del combobox en un nuevo registro
+				//Para evitar insertar datos de un pack en un joc
+				datosTabpane.setDisable(true);
+
+			}
+		}
+
+	}
+	
 	@FXML
 	private void OnActionguardarButton(ActionEvent event) {
+		
+		//Inserta un nuevo producto al clicar en guardar
 		
 		//VALIDARDATOS OTRO DIA
 		
@@ -149,7 +246,30 @@ public class ProductosController {
 		
 
 	}
-
+	
+	@FXML
+	private void OnActiontipo(ActionEvent event) {
+		//Evento sobre el Combobox, habilita el TabPane que toca al insertar un producto
+		
+		String value=tipoComboBox.getSelectionModel().getSelectedItem();
+		
+		if(value.equals("Joc")) {
+			datosTabpane.setDisable(false);
+			packTab.setDisable(true);
+			jocTab.setDisable(false);
+			datosTabpane.getSelectionModel().select(jocTab);
+		}else if(value.equals("Pack")) {
+			datosTabpane.setDisable(false);
+			packTab.setDisable(false);
+			jocTab.setDisable(true);
+			datosTabpane.getSelectionModel().select(packTab);
+			
+		}
+		
+		
+		
+	}
+	
 	@FXML
 	private void OnActionmodificarButton(ActionEvent event) {
 		
@@ -162,80 +282,7 @@ public class ProductosController {
 		salir();
 
 	}
-
-	@FXML
-	private void onKeyPressedId(KeyEvent e) throws IOException {
-		
-			//Evento principal
-		if (e.getCode() == KeyCode.ENTER || e.getCode() == KeyCode.TAB) {
-				
-			//Si ID existe cargo los datos del producto
-			if (dao_productos.searchProducto(idTextfield.getText()) != null) {
-				if (dao_productos.searchProducto(idTextfield.getText()) instanceof Joc) {
-					Joc juego = (Joc) dao_productos.searchProducto(idTextfield.getText());
-					nomTexfield.setText(juego.getNom());
-					stockTexfield.setText(String.valueOf(juego.getStock()));
-					precioTextfield.setText(String.valueOf(juego.getPreu()));
-					I_catalogoDatePicker.setValue(juego.getFecha_inicio());
-					f_catalogoDatePicker.setValue(juego.getFecha_final());
-					tipoComboBox.setValue("Joc");
-					edadminimaTextfield.setText(String.valueOf(juego.getEdad_minima()));
-					proveedorTextField.setText(String.valueOf(juego.getId_proveedor()));
-					
-					//Desabilito el campo combo para que al modificar el producto no se elija
-					//otro tipo de producto (Eso seria un nuevo producto no una modificacion)
-					tipoComboBox.setDisable(true);
-					//Habilito la Tab correspondiente al producto
-					packTab.setDisable(true);
-					jocTab.setDisable(false);
-					//Abro el Tab que toca
-					datosTabpane.getSelectionModel().select(jocTab);
-				} else {
-					Pack pack = (Pack) dao_productos.searchProducto(idTextfield.getText());
-					nomTexfield.setText(pack.getNom());
-					stockTexfield.setText(String.valueOf(pack.getStock()));
-					precioTextfield.setText(String.valueOf(pack.getPreu()));
-					I_catalogoDatePicker.setValue(pack.getFecha_inicio());
-					f_catalogoDatePicker.setValue(pack.getFecha_final());
-					descuentoTextField.setText(String.valueOf(pack.getDescuento()));
-					listadejuegosTextfield.setText(pack.listajuegosToString());
-					tipoComboBox.setValue("Pack");
-					
-					//Desabilito el campo combo para que al modificar el producto no se elija
-					//otro tipo de producto (Eso seria un nuevo producto no una modificacion)
-					tipoComboBox.setDisable(true);
-					//Habilito la Tab correspondiente al producto
-					jocTab.setDisable(true);
-					packTab.setDisable(false);
-					//Abro el Tab que toca
-					datosTabpane.getSelectionModel().select(packTab);
-
-				}
-
-			} else {
-				// Nuevo registro limpio formulario menos ID
-				nomTexfield.clear();
-				stockTexfield.clear();
-				I_catalogoDatePicker.getEditor().clear();
-				f_catalogoDatePicker.getEditor().clear();
-				//Vuelvo a habilitar el campo combo y lo seteo por defecto
-				tipoComboBox.setDisable(false);
-				tipoComboBox.setValue("Elije");
-				
-				precioTextfield.clear();
-				edadminimaTextfield.clear();
-				proveedorTextField.clear();
-				descuentoTextField.clear();
-				listadejuegosTextfield.clear();
-				
-				//quito el tab pane a la espera del evento del combobox en un nuevo registro
-				//Para evitar insertar datos de un pack en un joc
-				datosTabpane.setDisable(true);
-
-			}
-		}
-
-	}
+	
 
 	// Metodos para cargar una ventana al controlador
 	public Stage getVentana() {
@@ -265,11 +312,7 @@ public class ProductosController {
 		TreeSet<String>set = new TreeSet<String>(list);
 
 
-		return set;
-		
-		
-		
-		
+		return set;	
 		
 	}
 	private void limpiarFormulario() {
