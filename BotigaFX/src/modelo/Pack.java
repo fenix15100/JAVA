@@ -105,6 +105,13 @@ public final class Pack extends Producto {
 		
 	}
 	
+
+	public String listajuegosToString() {
+		
+		
+		return String.join(",", ListaJuegos);
+	}
+	
 	
 	
 	
