@@ -76,6 +76,7 @@ public class ProductosController {
 	@FXML
 	private TextField listadejuegosTextfield;
 
+	//Botones
 	@FXML
 	private Button guardarButton;
 
@@ -100,6 +101,8 @@ public class ProductosController {
 		tipoComboBox.setDisable(true);
 		precioTextfield.setDisable(true);
 		datosTabpane.setDisable(true);
+		guardarButton.setDisable(true);
+		modificarButton.setDisable(true);
 		
 		// Instancio el DAO Productos y cargo la persitencia de datos
 		dao_productos.loadData();
@@ -116,16 +119,19 @@ public class ProductosController {
 			//Habilito la interfaz para intereactuar con ella (Insert,Update,Show)
 			
 			nomTexfield.setDisable(false);
-			stockTexfield.setDisable(false);
 			I_catalogoDatePicker.setDisable(false);
 			f_catalogoDatePicker.setDisable(false);
 			tipoComboBox.setDisable(false);
 			precioTextfield.setDisable(false);
 			datosTabpane.setDisable(false);
-			
+			modificarButton.setDisable(false);
+			guardarButton.setDisable(false);
 				
-			//Si ID existe cargo los datos del producto
+			//Si ID existe cargo los datos del producto (Desabilito el boton gaurdar)
 			if (dao_productos.searchProducto(idTextfield.getText()) != null) {
+				
+				guardarButton.setDisable(true);
+				
 				if (dao_productos.searchProducto(idTextfield.getText()) instanceof Joc) {
 					Joc juego = (Joc) dao_productos.searchProducto(idTextfield.getText());
 					nomTexfield.setText(juego.getNom());
@@ -168,8 +174,10 @@ public class ProductosController {
 				}
 
 			} else {
-				// Si no existe Nuevo registro limpio formulario menos ID
+				// Si no existe Nuevo registro limpio formulario menos ID y habilito el campo stock
 				nomTexfield.clear();
+				stockTexfield.setEditable(true);
+				stockTexfield.setDisable(false);
 				stockTexfield.clear();
 				I_catalogoDatePicker.getEditor().clear();
 				f_catalogoDatePicker.getEditor().clear();
@@ -182,6 +190,9 @@ public class ProductosController {
 				proveedorTextField.clear();
 				descuentoTextField.clear();
 				listadejuegosTextfield.clear();
+				//Habilito el boton guardar para el insert y quito el modificar
+				guardarButton.setDisable(false);
+				modificarButton.setDisable(true);
 				
 				//quito el tab pane a la espera del evento del combobox en un nuevo registro
 				//Para evitar insertar datos de un pack en un joc
@@ -197,7 +208,7 @@ public class ProductosController {
 		
 		//Inserta un nuevo producto al clicar en guardar
 		
-		//VALIDARDATOS OTRO DIA
+		//Falta validar los datos si no validad lanzo alert
 		
 		if(tipoComboBox.getValue().equals("Joc")) {
 			
@@ -205,14 +216,14 @@ public class ProductosController {
 					idTextfield.getText(),
 					nomTexfield.getText(),
 					Double.parseDouble(precioTextfield.getText()),
-					0,
+					Integer.parseInt(stockTexfield.getText()),
 					I_catalogoDatePicker.getValue(),
 					f_catalogoDatePicker.getValue(),
 					Integer.parseInt(edadminimaTextfield.getText()),
 					Integer.parseInt(proveedorTextField.getText())
 					);
 			dao_productos.addProducto(juego);
-			limpiarFormulario();
+		
 			
 		}else if(tipoComboBox.getValue().equals("Pack")) {
 			
@@ -220,19 +231,20 @@ public class ProductosController {
 					idTextfield.getText(),
 					nomTexfield.getText(),
 					Double.parseDouble(precioTextfield.getText()),
-					0,
+					Integer.parseInt(stockTexfield.getText()),
 					I_catalogoDatePicker.getValue(),
 					f_catalogoDatePicker.getValue(),
 					generateTreeSetfromString(listadejuegosTextfield.getText()),
 					Double.parseDouble(descuentoTextField.getText())
 					);
 			dao_productos.addProducto(pack);
-			limpiarFormulario();
 			
 			
 			
 			
 			
+			
+	
 		}else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.initOwner(ventana);
@@ -243,6 +255,19 @@ public class ProductosController {
 			alert.showAndWait();
 			
 		}
+		
+		limpiarFormulario();
+		//AL insertar un nuevo producto quito la interfaz de nuevo
+		nomTexfield.setDisable(true);
+		stockTexfield.setDisable(true);
+		I_catalogoDatePicker.setDisable(true);
+		f_catalogoDatePicker.setDisable(true);
+		tipoComboBox.setDisable(true);
+		precioTextfield.setDisable(true);
+		datosTabpane.setDisable(true);
+		guardarButton.setDisable(true);
+		modificarButton.setDisable(true);
+		
 		
 
 	}
@@ -272,6 +297,58 @@ public class ProductosController {
 	
 	@FXML
 	private void OnActionmodificarButton(ActionEvent event) {
+		//Recojo el tipo de producto
+		String value=tipoComboBox.getSelectionModel().getSelectedItem();
+		
+		//Envio los datos al DAO y este sobreescribira los productos
+		if(value.equals("Joc")) {
+			//Falta validar los datos si no validad lanzo alert
+			
+			Joc juego=new Joc(
+					idTextfield.getText(),
+					nomTexfield.getText(),
+					Double.parseDouble(precioTextfield.getText()),
+					Integer.parseInt(stockTexfield.getText()),
+					I_catalogoDatePicker.getValue(),
+					f_catalogoDatePicker.getValue(),
+					Integer.parseInt(edadminimaTextfield.getText()),
+					Integer.parseInt(proveedorTextField.getText())
+					);
+			dao_productos.updateProducto(juego);
+			
+	
+			
+		}else if(value.equals("Pack")) {
+			
+			Pack pack=new Pack(
+					idTextfield.getText(),
+					nomTexfield.getText(),
+					Double.parseDouble(precioTextfield.getText()),
+					Integer.parseInt(stockTexfield.getText()),
+					I_catalogoDatePicker.getValue(),
+					f_catalogoDatePicker.getValue(),
+					generateTreeSetfromString(listadejuegosTextfield.getText()),
+					Double.parseDouble(descuentoTextField.getText())
+					);
+			dao_productos.updateProducto(pack);
+			guardarButton.setDisable(false);
+			
+		
+			
+		}
+		
+		limpiarFormulario();
+		//AL modificar un producto quito la interfaz de nuevo
+		nomTexfield.setDisable(true);
+		stockTexfield.setDisable(true);
+		I_catalogoDatePicker.setDisable(true);
+		f_catalogoDatePicker.setDisable(true);
+		tipoComboBox.setDisable(true);
+		precioTextfield.setDisable(true);
+		datosTabpane.setDisable(true);
+		guardarButton.setDisable(true);
+		modificarButton.setDisable(true);
+		
 		
 		
 
@@ -279,6 +356,7 @@ public class ProductosController {
 
 	@FXML
 	private void OnActionsalirButton(ActionEvent event) throws IOException {
+		//Evento al clicar sobre el boton salir
 		salir();
 
 	}
@@ -330,6 +408,12 @@ public class ProductosController {
 		packTab.setDisable(false);
 		jocTab.setDisable(false);
 
+	}
+	
+	private boolean validator() {
+		
+		//Implementar
+		return true;
 	}
 
 }
