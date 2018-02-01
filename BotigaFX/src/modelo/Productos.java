@@ -81,6 +81,7 @@ public class Productos {
 		}else {
 			
 			lista_productos.put(productemp.getId(),productemp);
+			System.out.println("Producto "+productemp.getId()+" Introducido correctamente");
 			return true;	
 		}
 		
