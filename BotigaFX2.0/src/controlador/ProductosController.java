@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Observable;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,6 +37,9 @@ public class ProductosController {
 
 	private Stage ventana;
 	private Productos dao_productos = new Productos();
+	private ObservableList<Producto> datatableview=null;
+	
+	
 
 	//PANE PRINCIPAL
 	@FXML
@@ -120,6 +124,7 @@ public class ProductosController {
 	
 	
 
+	
 	//Main de la vista-------------------------------------
 	
 	@FXML
@@ -147,17 +152,25 @@ public class ProductosController {
 
 		/* Table VIEW*/
 		
-		//Obtengo una colecion FX con todos los productos del sistema
+		//Obtengo una colecion FX con todos los productos del sistema para usarlos mas tarde en la tablaview
+		datatableview=FXCollections.observableList(new ArrayList<Producto>(dao_productos.getProductos().values()));
 		
-		ObservableList<Producto> datatableview=FXCollections.observableList(new ArrayList<Producto>(dao_productos.getProductos().values()));
 		
 		
+	
 		//Configuro el contenido que tendran las Celdas de la tabla indicando los nombres de las propiedades a mostrar del modelo productos
 		tableviewid.setCellValueFactory(new PropertyValueFactory<Producto,String>("id"));
 		tableviewnombre.setCellValueFactory(new PropertyValueFactory<Producto,String>("nom"));
 		
 		//Cargo la lista FX en la tabla
 		productostableview.setItems(datatableview);
+		
+		
+		//Creo evento que mostrar en la ventana de datos el item selecionado de la tabla
+		//El evento recoje el objeto selecionado y se lo pasa a un metodo que seteara la ventana con los datos
+		//Las variables del listenerno existen digamos que es magia, la tabla se entiende XD
+		
+		productostableview.getSelectionModel().selectedItemProperty().addListener((observable,oldvalue,newvalue)->mostrarproducto(newvalue));
 		
 		
 		
@@ -170,6 +183,7 @@ public class ProductosController {
 	}
 	
 	
+
 	//--------METODOS Y EVENTOS de DATOSPRODUCTO-----------------------------------//
 
 	@FXML
@@ -217,7 +231,7 @@ public class ProductosController {
 					jocTab.setDisable(false);
 					// Abro el Tab que toca
 					datosTabpane.getSelectionModel().select(jocTab);
-					//Habilito el boton borrar
+					
 					
 				} else {
 					Pack pack = (Pack) dao_productos.searchProducto(idTextfield.getText());
@@ -289,6 +303,8 @@ public class ProductosController {
 						I_catalogoDatePicker.getValue(), f_catalogoDatePicker.getValue(),
 						Integer.parseInt(edadminimaTextfield.getText()), Integer.parseInt(proveedorTextField.getText()));
 				dao_productos.addProducto(juego);
+				datatableview.add(juego);
+				productostableview.refresh();
 				
 			}
 
@@ -304,6 +320,8 @@ public class ProductosController {
 						generateTreeSetfromString(listadejuegosTextfield.getText()),
 						Double.parseDouble(descuentoTextField.getText()));
 				dao_productos.addProducto(pack);
+				datatableview.add(pack);
+				productostableview.refresh();
 				
 				
 				
@@ -361,6 +379,8 @@ public class ProductosController {
 
 	@FXML
 	private void OnActionmodificarButton(ActionEvent event) {
+		
+	
 		// Recojo el tipo de producto
 		String value = tipoComboBox.getSelectionModel().getSelectedItem();
 
@@ -375,6 +395,13 @@ public class ProductosController {
 						Integer.parseInt(edadminimaTextfield.getText()), Integer.parseInt(proveedorTextField.getText()));
 				dao_productos.updateProducto(juego);
 				
+				//Borro el producto selecionado en la tabla de la colecion fx (no confundir con el DAO)
+				datatableview.remove(productostableview.getSelectionModel().getSelectedItem());
+				//Meto el nuevo objeto producto guardado en el DAO en la colecion FX
+				datatableview.add(juego);
+				//Refresco la tabla
+				productostableview.refresh();
+				
 			}
 
 			
@@ -388,7 +415,14 @@ public class ProductosController {
 						generateTreeSetfromString(listadejuegosTextfield.getText()),
 						Double.parseDouble(descuentoTextField.getText()));
 				dao_productos.updateProducto(pack);
-				guardarButton.setDisable(false);
+				
+				//Borro el producto selecionado en la tabla de la colecion fx (no confundir con el DAO)
+				datatableview.remove(productostableview.getSelectionModel().getSelectedItem());
+				//Meto el nuevo objeto producto guardado en el DAO en la colecion FX
+				datatableview.add(pack);
+				//Refresco la tabla
+				productostableview.refresh();
+				
 				
 			}
 			
@@ -407,6 +441,8 @@ public class ProductosController {
 		guardarButton.setDisable(true);
 		modificarButton.setDisable(true);
 		eliminarButton.setDisable(true);
+		idTextfield.setEditable(true);
+
 
 	}
 	
@@ -414,9 +450,12 @@ public class ProductosController {
 	@FXML
 	private void OnActioneliminarButton(ActionEvent event) throws IOException {
 		// Evento al clicar sobre el boton Eliminar
-		System.out.println("tus muertos");
+		
 		dao_productos.deleteProducto(idTextfield.getText());
-		System.out.println("tus muertos");
+		
+		//Borro de la colecion el Item de la tabla selecionado
+		datatableview.remove(productostableview.getSelectionModel().getSelectedIndex());
+		
 		
 		limpiarFormulario();
 		// AL borrar un producto quito la interfaz de nuevo
@@ -430,6 +469,8 @@ public class ProductosController {
 		guardarButton.setDisable(true);
 		modificarButton.setDisable(true);
 		eliminarButton.setDisable(true);
+		
+		idTextfield.setEditable(true);
 
 	}
 	
@@ -572,7 +613,72 @@ public class ProductosController {
 	
 	//-------------------------------METODOS Y EVENTOS DE TABLEVIEW----------------------------------------------//
 	
-	
+	public void mostrarproducto(Producto producto) {
+		
+		//Configuro la interfaz
+		idTextfield.setEditable(false);
+		nomTexfield.setDisable(false);
+		I_catalogoDatePicker.setDisable(false);
+		f_catalogoDatePicker.setDisable(false);
+		tipoComboBox.setDisable(false);
+		precioTextfield.setDisable(false);
+		datosTabpane.setDisable(false);
+		
+		guardarButton.setDisable(true);
+		eliminarButton.setDisable(false);
+		modificarButton.setDisable(false);
+		
+		if(producto instanceof Joc) {
+			
+			Joc juego=(Joc)producto;
+			idTextfield.setText(juego.getId());
+			nomTexfield.setText(juego.getNom());
+			stockTexfield.setText(String.valueOf(juego.getStock()));
+			precioTextfield.setText(String.valueOf(juego.getPreu()));
+			I_catalogoDatePicker.setValue(juego.getFecha_inicio());
+			f_catalogoDatePicker.setValue(juego.getFecha_final());
+			tipoComboBox.setValue("Joc");
+			edadminimaTextfield.setText(String.valueOf(juego.getEdad_minima()));
+			proveedorTextField.setText(String.valueOf(juego.getId_proveedor()));
+
+			// Desabilito el campo combo para que al modificar el producto no se elija
+			// otro tipo de producto (Eso seria un nuevo producto no una modificacion)
+			tipoComboBox.setDisable(true);
+			// Habilito la Tab correspondiente al producto
+			packTab.setDisable(true);
+			jocTab.setDisable(false);
+			// Abro el Tab que toca
+			datosTabpane.getSelectionModel().select(jocTab);
+			
+			
+		}else if(producto instanceof Pack) {
+			
+			Pack pack=(Pack)producto;
+			idTextfield.setText(pack.getId());
+			nomTexfield.setText(pack.getNom());
+			stockTexfield.setText(String.valueOf(pack.getStock()));
+			precioTextfield.setText(String.valueOf(pack.getPreu()));
+			I_catalogoDatePicker.setValue(pack.getFecha_inicio());
+			f_catalogoDatePicker.setValue(pack.getFecha_final());
+			descuentoTextField.setText(String.valueOf(pack.getDescuento()));
+			listadejuegosTextfield.setText(pack.listajuegosToString());
+			tipoComboBox.setValue("Pack");
+
+			// Desabilito el campo combo para que al modificar el producto no se elija
+			// otro tipo de producto (Eso seria un nuevo producto no una modificacion)
+			tipoComboBox.setDisable(true);
+			// Habilito la Tab correspondiente al producto
+			jocTab.setDisable(true);
+			packTab.setDisable(false);
+			// Abro el Tab que toca
+			datosTabpane.getSelectionModel().select(packTab);
+			
+			
+			
+			
+		}
+		
+	}
 	
 	
 	
