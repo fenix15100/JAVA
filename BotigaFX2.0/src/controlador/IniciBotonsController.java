@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -26,13 +27,9 @@ public class IniciBotonsController extends Application {
 	private ResourceBundle texts = ResourceBundle.getBundle("vista.Texts", localitzacioDisplay);
 	
 	@FXML
-    private AnchorPane root;
+    private BorderPane root;
 
-    @FXML
-    private Button btnProductos;
-
-    @FXML
-    private Button btnSalir;
+    
 
 	@Override
 	public void start(Stage escenarioPrincipal) throws Exception {
@@ -55,7 +52,7 @@ public class IniciBotonsController extends Application {
 
 	}
 	
-	
+	/*
 	 @FXML
 	 public void OnActionbtnProductos(ActionEvent event) throws IOException {
 		 
@@ -102,5 +99,5 @@ public class IniciBotonsController extends Application {
 		 
 		 Platform.exit();
 
-	 }
+	 }*/
 }
