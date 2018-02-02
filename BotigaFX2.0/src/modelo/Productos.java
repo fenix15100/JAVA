@@ -70,6 +70,16 @@ public class Productos {
 		}
 		
 	}
+	
+	
+	//Get Treemap
+	
+	public TreeMap<String, Producto> getProductos(){
+		
+		return lista_productos;	
+	}
+	
+	
 	//Metodo que recibe un producto y lo introduce en la estructura de datos
 	public boolean addProducto(Producto productemp) {
 		

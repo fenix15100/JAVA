@@ -3,21 +3,28 @@ package controlador;
 //http://code.makery.ch/blog/javafx-8-event-handling-examples/
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -30,10 +37,30 @@ public class ProductosController {
 	private Stage ventana;
 	private Productos dao_productos = new Productos();
 
-	// Inyecion de los campos Producto
+	//PANE PRINCIPAL
 	@FXML
-	private AnchorPane root;
-
+	private SplitPane root;
+	
+	
+	//-------------------------Controles tableview--------------------------------------------//
+	@FXML
+	private TableView<Producto> productostableview;
+	
+	@FXML
+	private TableColumn<Producto, String> tableviewid;
+	@FXML
+	private TableColumn<Producto, String> tableviewnombre;
+	
+	
+	
+	
+	
+	
+	//------------------------Controles datosproducto----------------------------------------------//
+	
+	@FXML
+	private AnchorPane datosproducto;
+	// Inyecion de los campos Producto
 	@FXML
 	private TextField idTextfield;
 
@@ -87,10 +114,21 @@ public class ProductosController {
 
 	@FXML
 	private Button salirButton;
+	
+	@FXML
+	private Button eliminarButton;
+	
+	
 
+	//Main de la vista-------------------------------------
+	
 	@FXML
 	private void initialize() throws IOException {
-
+		// Instancio el DAO Productos y cargo la persitencia de datos
+		dao_productos.loadData();
+		
+		
+		/*    DatosProducto   */
 		// Inyecto en el ComboBox dos Values.
 		tipoComboBox.getItems().addAll("Joc", "Pack");
 
@@ -105,11 +143,34 @@ public class ProductosController {
 		datosTabpane.setDisable(true);
 		guardarButton.setDisable(true);
 		modificarButton.setDisable(true);
+		eliminarButton.setDisable(true);
 
-		// Instancio el DAO Productos y cargo la persitencia de datos
-		dao_productos.loadData();
+		/* Table VIEW*/
+		
+		//Obtengo una colecion FX con todos los productos del sistema
+		
+		ObservableList<Producto> datatableview=FXCollections.observableList(new ArrayList<Producto>(dao_productos.getProductos().values()));
+		
+		
+		//Configuro el contenido que tendran las Celdas de la tabla indicando los nombres de las propiedades a mostrar del modelo productos
+		tableviewid.setCellValueFactory(new PropertyValueFactory<Producto,String>("id"));
+		tableviewnombre.setCellValueFactory(new PropertyValueFactory<Producto,String>("nom"));
+		
+		//Cargo la lista FX en la tabla
+		productostableview.setItems(datatableview);
+		
+		
+		
+		
+		
+		
+		
+		
 
 	}
+	
+	
+	//--------METODOS Y EVENTOS de DATOSPRODUCTO-----------------------------------//
 
 	@FXML
 	private void onKeyPressedId(KeyEvent e) throws IOException {
@@ -127,11 +188,15 @@ public class ProductosController {
 			datosTabpane.setDisable(false);
 			modificarButton.setDisable(false);
 			guardarButton.setDisable(false);
+			eliminarButton.setDisable(false);
 
 			// Si ID existe cargo los datos del producto (Desabilito el boton gaurdar)
 			if (dao_productos.searchProducto(idTextfield.getText()) != null) {
 
 				guardarButton.setDisable(true);
+				
+				//Habilito el boton borrar
+				eliminarButton.setDisable(false);
 
 				if (dao_productos.searchProducto(idTextfield.getText()) instanceof Joc) {
 					Joc juego = (Joc) dao_productos.searchProducto(idTextfield.getText());
@@ -152,6 +217,8 @@ public class ProductosController {
 					jocTab.setDisable(false);
 					// Abro el Tab que toca
 					datosTabpane.getSelectionModel().select(jocTab);
+					//Habilito el boton borrar
+					
 				} else {
 					Pack pack = (Pack) dao_productos.searchProducto(idTextfield.getText());
 					nomTexfield.setText(pack.getNom());
@@ -192,9 +259,10 @@ public class ProductosController {
 				proveedorTextField.clear();
 				descuentoTextField.clear();
 				listadejuegosTextfield.clear();
-				// Habilito el boton guardar para el insert y quito el modificar
+				// Habilito el boton guardar para el insert y quito el modificar y borrar
 				guardarButton.setDisable(false);
 				modificarButton.setDisable(true);
+				eliminarButton.setDisable(true);
 
 				// quito el tab pane a la espera del evento del combobox en un nuevo registro
 				// Para evitar insertar datos de un pack en un joc
@@ -210,7 +278,7 @@ public class ProductosController {
 
 		// Inserta un nuevo producto al clicar en guardar
 
-		// Falta validar los datos si no validad lanzo alert
+		
 
 		if (tipoComboBox.getValue().equals("Joc")) {
 			
@@ -265,6 +333,7 @@ public class ProductosController {
 		datosTabpane.setDisable(true);
 		guardarButton.setDisable(true);
 		modificarButton.setDisable(true);
+		eliminarButton.setDisable(true);
 
 	}
 
@@ -297,7 +366,7 @@ public class ProductosController {
 
 		// Envio los datos al DAO y este sobreescribira los productos
 		if (value.equals("Joc")) {
-			// Falta validar los datos si no validad lanzo alert
+			
 			
 			if(validator("Joc")) {
 				Joc juego = new Joc(idTextfield.getText(), nomTexfield.getText(),
@@ -337,8 +406,33 @@ public class ProductosController {
 		datosTabpane.setDisable(true);
 		guardarButton.setDisable(true);
 		modificarButton.setDisable(true);
+		eliminarButton.setDisable(true);
 
 	}
+	
+	
+	@FXML
+	private void OnActioneliminarButton(ActionEvent event) throws IOException {
+		// Evento al clicar sobre el boton Eliminar
+		System.out.println("tus muertos");
+		dao_productos.deleteProducto(idTextfield.getText());
+		System.out.println("tus muertos");
+		
+		limpiarFormulario();
+		// AL borrar un producto quito la interfaz de nuevo
+		nomTexfield.setDisable(true);
+		stockTexfield.setDisable(true);
+		I_catalogoDatePicker.setDisable(true);
+		f_catalogoDatePicker.setDisable(true);
+		tipoComboBox.setDisable(true);
+		precioTextfield.setDisable(true);
+		datosTabpane.setDisable(true);
+		guardarButton.setDisable(true);
+		modificarButton.setDisable(true);
+		eliminarButton.setDisable(true);
+
+	}
+	
 
 	@FXML
 	private void OnActionsalirButton(ActionEvent event) throws IOException {
@@ -346,37 +440,7 @@ public class ProductosController {
 		salir();
 
 	}
-
-	// Metodos para cargar una ventana al controlador
-	public Stage getVentana() {
-		return ventana;
-	}
-
-	public void setVentana(Stage ventana) {
-		this.ventana = ventana;
-	}
-
-	// Metodo que se ejecuta al salir de la aplicacion
-	public void salir() throws IOException {
-
-		// Guarda la estructura de datos en un fichero y cierra el escenario
-		dao_productos.saveData();
-		ventana.close();
-
-	}
-
-	private TreeSet<String> generateTreeSetfromString(String data) {
-
-		// http://java-tweets.blogspot.com.es/2012/07/convert-array-to-treeset-in-java.html
-
-		String[] vector = data.split(",");
-		List<String> list = Arrays.asList(vector);
-		TreeSet<String> set = new TreeSet<String>(list);
-
-		return set;
-
-	}
-
+	
 	private void limpiarFormulario() {
 		idTextfield.clear();
 		nomTexfield.clear();
@@ -503,9 +567,58 @@ public class ProductosController {
 
 				return false;
 		}
+	}
+	//-----------------------------------------------------------------------------------------------------------//
+	
+	//-------------------------------METODOS Y EVENTOS DE TABLEVIEW----------------------------------------------//
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//---------------------------------------------------------------------------------------------------------//
+
+	
+	
+	//---------------------------------METODOS DE LA CLASE----------------------------------------------------//
+	public Stage getVentana() {
+		return ventana;
+	}
+
+	public void setVentana(Stage ventana) {
+		this.ventana = ventana;
+	}
+
+	// Metodo que se ejecuta al salir de la aplicacion
+	public void salir() throws IOException {
+
+		// Guarda la estructura de datos en un fichero y cierra el escenario
+		dao_productos.saveData();
+		ventana.close();
+
+	}
+
+	private TreeSet<String> generateTreeSetfromString(String data) {
+
+		// http://java-tweets.blogspot.com.es/2012/07/convert-array-to-treeset-in-java.html
+
+		String[] vector = data.split(",");
+		List<String> list = Arrays.asList(vector);
+		TreeSet<String> set = new TreeSet<String>(list);
+
+		return set;
+
+	}
+
+	
 
 
 	
 
-	}
+	
 }

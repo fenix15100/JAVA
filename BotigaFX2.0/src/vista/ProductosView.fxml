@@ -7,15 +7,24 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <SplitPane fx:id="root" dividerPositions="0.35964912280701755" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ProductosController">
    <items>
-      <AnchorPane fx:id="productostableview" prefHeight="754.0" prefWidth="315.0" />
-      <AnchorPane style="-fx-background-color: whitesmoke;">
+      <AnchorPane prefHeight="754.0" prefWidth="315.0">
+         <children>
+            <TableView fx:id="productostableview" layoutY="7.0" prefHeight="747.0" prefWidth="295.0">
+              <columns>
+                <TableColumn fx:id="tableviewid" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="tableviewnombre" prefWidth="219.0" text="Nombre" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+      <AnchorPane fx:id="datosproducto" style="-fx-background-color: whitesmoke;">
          <children>
             <Label layoutX="7.0" layoutY="63.0" prefHeight="18.0" prefWidth="30.0" text="ID" />
             <TextField fx:id="idTextfield" layoutX="76.0" layoutY="59.0" onKeyPressed="#onKeyPressedId" prefHeight="25.0" prefWidth="304.0" />
@@ -41,13 +50,6 @@
                               <TextField fx:id="edadminimaTextfield" layoutX="97.0" layoutY="10.0" />
                               <Label layoutX="14.0" layoutY="77.0" text="Proveedor" />
                               <TextField fx:id="proveedorTextField" layoutX="97.0" layoutY="73.0" />
-                              <ToolBar layoutX="256.0" layoutY="132.0" prefHeight="40.0" prefWidth="200.0">
-                                 <items>
-                                  <Button fx:id="guardarButton" mnemonicParsing="false" onAction="#OnActionguardarButton" text="Guardar" />
-                                    <Button fx:id="modificarButton" mnemonicParsing="false" onAction="#OnActionmodificarButton" text="Modificar" />
-                                    <Button fx:id="salirButton" mnemonicParsing="false" onAction="#OnActionsalirButton" text="Salir" />
-                                 </items>
-                              </ToolBar>
                            </children>
                         </AnchorPane>
                   </content>
@@ -66,6 +68,14 @@
                 </Tab>
               </tabs>
             </TabPane>
+            <ToolBar layoutX="230.0" layoutY="643.0" prefHeight="40.0" prefWidth="269.0">
+               <items>
+                <Button fx:id="guardarButton" mnemonicParsing="false" onAction="#OnActionguardarButton" text="Guardar" />
+                  <Button fx:id="modificarButton" mnemonicParsing="false" onAction="#OnActionmodificarButton" text="Modificar" />
+                  <Button fx:id="eliminarButton" mnemonicParsing="false" onAction="#OnActioneliminarButton" text="Eliminar" />
+                  <Button fx:id="salirButton" mnemonicParsing="false" onAction="#OnActionsalirButton" text="Salir" />
+               </items>
+            </ToolBar>
          </children>
       </AnchorPane>
    </items>
