@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -61,7 +62,8 @@ public class IniciBotonsController extends Application {
 		
 		 //Cargo en memoria la vista ProductosView y la cargo dentro de un Panel 
 			FXMLLoader loaderview = new FXMLLoader(getClass().getResource("/vista/ProductosView.fxml"));
-			AnchorPane Panel = (AnchorPane)loaderview.load();
+			
+			SplitPane Panel=(SplitPane)loaderview.load();
 	
 			
 			//Creo una nueva Ventana
