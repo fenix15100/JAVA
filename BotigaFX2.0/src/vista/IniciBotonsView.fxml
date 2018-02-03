@@ -5,17 +5,20 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="642.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="642.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.IniciBotonsController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="%Inicio.menu.botiga">
             <items>
-              <MenuItem mnemonicParsing="false" text="%Inicio.menu.botiga.productes" />
+              <MenuItem mnemonicParsing="false" onAction="#OnActionbtnProductos" text="%Inicio.menu.botiga.productes" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="%Inicio.menu.magatzem" />
-          <Menu mnemonicParsing="false" text="%Inicio.menu.salir" />
+          <Menu mnemonicParsing="false" text="Opciones">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#OnMenubtnSalir" text="%Inicio.menu.salir" />
+               </items></Menu>
         </menus>
       </MenuBar>
    </top>

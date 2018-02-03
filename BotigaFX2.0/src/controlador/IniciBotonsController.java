@@ -13,9 +13,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -52,11 +50,14 @@ public class IniciBotonsController extends Application {
 
 	}
 	
-	/*
+	
 	 @FXML
 	 public void OnActionbtnProductos(ActionEvent event) throws IOException {
 		 
 		
+		 
+		
+	
 		 //Cargo en memoria la vista ProductosView y la cargo dentro de un Panel 
 			FXMLLoader loaderview = new FXMLLoader(getClass().getResource("/vista/ProductosView.fxml"));
 			
@@ -90,14 +91,15 @@ public class IniciBotonsController extends Application {
 					}
 				}
 			});   
+			
 		 
 
 	 }
 
 	 @FXML
-	 public void OnActionbtnSalir(ActionEvent event) {
+	 public void OnMenubtnSalir(ActionEvent event) {
 		 
 		 Platform.exit();
 
-	 }*/
+	 }
 }
