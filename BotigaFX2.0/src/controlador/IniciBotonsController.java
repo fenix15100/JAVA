@@ -9,15 +9,14 @@ import java.util.Locale.Category;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-import modelo.Productos;
+
 
 
 public class IniciBotonsController extends Application {
@@ -27,7 +26,7 @@ public class IniciBotonsController extends Application {
 	
 	
 
-	
+	//Inyecto el Pane principal de la vista
 	@FXML
     private BorderPane root;
 
