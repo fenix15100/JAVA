@@ -11,6 +11,7 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -692,20 +693,16 @@ public class ProductosController {
 	
 	
 	//---------------------------------METODOS DE LA CLASE----------------------------------------------------//
-	public Stage getVentana() {
-		return ventana;
-	}
 
-	public void setVentana(Stage ventana) {
-		this.ventana = ventana;
-	}
 
 	// Metodo que se ejecuta al salir de la aplicacion
 	public void salir() throws IOException {
 
 		// Guarda la estructura de datos en un fichero y cierra el escenario
 		dao_productos.saveData();
-		ventana.close();
+		Platform.exit();
+		
+
 
 	}
 
