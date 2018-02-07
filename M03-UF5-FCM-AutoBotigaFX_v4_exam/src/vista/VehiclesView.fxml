@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="581.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.VehiclesController">
+   <children>
+      <TableView fx:id="vehiclesTableView" onMouseClicked="#onMouseClickedTableView" prefHeight="509.0" prefWidth="803.0" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <columns>
+          <TableColumn fx:id="matriculaColumn" prefWidth="107.0" text="Matricula" />
+            <TableColumn fx:id="marcaColumn" prefWidth="105.0" text="Marca" />
+            <TableColumn fx:id="modelColumn" prefWidth="127.0" text="Model" />
+            <TableColumn fx:id="versioColumn" prefWidth="115.0" text="Versio" />
+            <TableColumn fx:id="emisionsColumn" prefWidth="182.0" text="EmisionsCO2" />
+            <TableColumn fx:id="preuColumn" prefWidth="61.0" text="Preu" />
+            <TableColumn fx:id="datamatriculacolum" prefWidth="164.0" text="Data Matricula" />
+        </columns>
+      </TableView>
+      <MenuButton fx:id="nouMenuButton" layoutX="14.0" layoutY="534.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Nou" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="10.0">
+        <items>
+          <MenuItem fx:id="nouCotxeMenuItem" mnemonicParsing="false" onAction="#onActionButtonNouCotxe" text="Cotxe" />
+            <MenuItem fx:id="nouMotoMenuItem" mnemonicParsing="false" onAction="#onActionButtonNouMoto" text="Moto" />
+        </items>
+      </MenuButton>
+      <Button fx:id="modificaButton" layoutX="123.0" layoutY="534.0" mnemonicParsing="false" onAction="#onActionButtonModifica" prefHeight="25.0" prefWidth="111.0" text="Modifica" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="125.0" />
+      <Button fx:id="eliminaButton" layoutX="238.0" layoutY="534.0" mnemonicParsing="false" onAction="#onActionButtonElimina" prefHeight="25.0" prefWidth="113.0" text="Elimina" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="250.0" />
+      <Button fx:id="guardarButton" layoutX="715.0" layoutY="530.0" mnemonicParsing="false" onAction="#onActionButtonGuardar" prefHeight="25.0" prefWidth="106.0" text="Guardar" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+      <Button fx:id="exportarButton" layoutX="500.0" layoutY="524.0" mnemonicParsing="false" onAction="#onActionButtonExportar" text="Exportar" AnchorPane.bottomAnchor="15.0" />
+   </children>
+</AnchorPane>
