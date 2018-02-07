@@ -135,7 +135,7 @@ public class AccountController {
 		env.put(Context.INITIAL_CONTEXT_FACTORY,"com.sun.jndi.ldap.LdapCtxFactory");
 		env.put(Context.PROVIDER_URL,"ldap://192.168.123.240:389/o=fran.local");
 		env.put(Context.SECURITY_AUTHENTICATION, "simple");
-		env.put(Context.SECURITY_PRINCIPAL, "cn=pepe,dc=fran,dc=local");
+		env.put(Context.SECURITY_PRINCIPAL, "cn="+login.getUser()+",dc=fran,dc=local");
 		env.put(Context.SECURITY_CREDENTIALS, login.getPassword());
 		
 		for(String value:env.values()) {
