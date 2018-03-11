@@ -384,7 +384,9 @@ public class ProductosController {
 	private void OnActioneliminarButton(ActionEvent event) {
 		
 		//Implementar 
-		//cojer la ID de un registro existente y mandarselo al DAO
+		//cojer la ID de un registro existente y mandarselo al DAO 
+		
+		//dao_productos.deleteProducto(id)
 		
 		
 		
