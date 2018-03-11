@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Arrays;
 import java.util.List;
 import java.util.TreeSet;
@@ -182,7 +181,7 @@ public class Productos {
 	//Estructura de datos el Producto
 	public void updateProducto(Producto productemp) {
 		
-		//IMplementar
+		
 		
 		
 	}
