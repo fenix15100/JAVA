@@ -88,6 +88,9 @@ public class ProductosController {
 
 	@FXML
 	private Button modificarButton;
+	
+	@FXML
+	private Button eliminarButton;
 
 	@FXML
 	private Button salirButton;
@@ -110,7 +113,7 @@ public class ProductosController {
 		datosTabpane.setDisable(true);
 		guardarButton.setDisable(true);
 		modificarButton.setDisable(true);
-
+		eliminarButton.setDisable(true);
 		
 		
 		
@@ -138,6 +141,9 @@ public class ProductosController {
 			if (dao_productos.searchProducto(idTextfield.getText()) != null) {
 
 				guardarButton.setDisable(true);
+				
+				//Habilito el boton borrar
+				eliminarButton.setDisable(false);
 
 				if (dao_productos.searchProducto(idTextfield.getText()) instanceof Joc) {
 					Joc juego = (Joc) dao_productos.searchProducto(idTextfield.getText());
@@ -198,9 +204,10 @@ public class ProductosController {
 				proveedorTextField.clear();
 				descuentoTextField.clear();
 				listadejuegosTextfield.clear();
-				// Habilito el boton guardar para el insert y quito el modificar
+				// Habilito el boton guardar para el insert y quito el modificar y borrar
 				guardarButton.setDisable(false);
 				modificarButton.setDisable(true);
+				eliminarButton.setDisable(true);
 
 				// quito el tab pane a la espera del evento del combobox en un nuevo registro
 				// Para evitar insertar datos de un pack en un joc
@@ -295,6 +302,7 @@ public class ProductosController {
 		datosTabpane.setDisable(true);
 		guardarButton.setDisable(true);
 		modificarButton.setDisable(true);
+		eliminarButton.setDisable(true);
 
 	}
 
@@ -368,6 +376,18 @@ public class ProductosController {
 		guardarButton.setDisable(true);
 		modificarButton.setDisable(true);
 
+	}
+	
+	
+	
+	@FXML
+	private void OnActioneliminarButton(ActionEvent event) {
+		
+		//Implementar 
+		//cojer la ID de un registro existente y mandarselo al DAO
+		
+		
+		
 	}
 
 	@FXML
