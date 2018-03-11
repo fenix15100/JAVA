@@ -7,14 +7,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.TreeMap;
+import java.util.Arrays;
+import java.util.List;
+import java.util.TreeSet;
+
+
 
 
 public class Productos {
 	
 	private Connection conexionBD;
-	private TreeMap<String, Producto> lista_productos=new TreeMap<String,Producto>();
-
 	
 	public Productos(Connection conexionBD) {
 		this.conexionBD=conexionBD;
@@ -41,10 +43,10 @@ public class Productos {
 			sta.setInt(6, joc.getStock());
 			sta.setDate(7, java.sql.Date.valueOf(joc.getFecha_inicio()));
 			sta.setDate(8, java.sql.Date.valueOf(joc.getFecha_final()));
-			sta.setString(9, String.valueOf('J'));
+			sta.setString(9,"Joc");
 			
 			sta.executeUpdate();
-			
+			sta.close();
 			//Inserto el Pack	
 		}else if(productemp instanceof Pack) {
 			
@@ -66,10 +68,13 @@ public class Productos {
 			sta.setInt(7, pack.getStock());
 			sta.setDate(8, java.sql.Date.valueOf(pack.getFecha_inicio()));
 			sta.setDate(9, java.sql.Date.valueOf(pack.getFecha_final()));
-			sta.setString(10, String.valueOf('P'));
+			sta.setString(10,"Pack");
 			
 			sta.executeUpdate();
+			sta.close();
 		}
+		
+		
 		
 		
 		
@@ -79,9 +84,92 @@ public class Productos {
 	
 	//Metodo que recibe una ID y comprueba que exista en la estructura de datos.
 	//Si es asi devuelve el Producto
+	@SuppressWarnings("resource")
 	public Producto searchProducto(String id) {
-		//Implementar
-		return null;
+		try {
+			PreparedStatement sta=conexionBD.prepareStatement("SELECT tipo FROM productes WHERE idproducte=?");
+			sta.setString(1, id);
+			ResultSet rs=sta.executeQuery();
+			
+			if(!rs.next()) return null;
+			
+			else {
+				String tipo=rs.getString("tipo");
+				
+				switch (tipo) {
+					case "Joc":
+						
+						sta=conexionBD.prepareStatement("SELECT * FROM jocs WHERE idproducte=?");
+						sta.setString(1, id);
+						rs=sta.executeQuery();
+						
+						if(rs.next()) {
+						
+							Joc juego=new Joc(rs.getString("idproducte"), rs.getString("nom"), rs.getDouble("preu"), rs.getInt("stock"), 
+											  rs.getDate("fecha_inicio").toLocalDate(), rs.getDate("fecha_final").toLocalDate(), 
+											  rs.getInt("edat"), rs.getInt("idproveidor"));
+							
+							return juego;
+						}
+						rs.close();
+						sta.close();
+						
+						
+						break;
+					
+					case "Pack":
+						
+						sta=conexionBD.prepareStatement("SELECT * FROM packs1 WHERE idproducte=?");
+						sta.setString(1, id);
+						rs=sta.executeQuery();
+						
+						if(rs.next()) {
+							
+							//Convierto la array cruda de lista de juegos en un Treset<String> para poder construir el pack
+							//Posdata me cago en todos sus muertos
+							Array array=rs.getArray("jocs");
+							Integer[] array_int = (Integer[])array.getArray();
+							String string_lista =Arrays.toString(array_int);
+							string_lista=string_lista.substring(1, string_lista.length()-1);
+							String[] array_string = string_lista.split(","+" ");
+							List<String> list = Arrays.asList(array_string);
+							TreeSet<String> lista_juegos = new TreeSet<String>(list);
+							
+							
+							
+						
+							Pack pack=new Pack(rs.getString("idproducte"), rs.getString("nom"), rs.getDouble("preu"), rs.getInt("stock"), 
+											  rs.getDate("fecha_inicio").toLocalDate(), rs.getDate("fecha_final").toLocalDate(), 
+											  lista_juegos,rs.getDouble("porc_dto"));
+							
+							
+							return pack;
+						}
+						
+						rs.close();
+						sta.close();
+						
+						
+						break;
+	
+					default:
+						break;
+				}
+				
+				
+				
+			}
+			
+			return null;
+			
+				
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+		
+		
+		
 		
 		
 		
