@@ -19,20 +19,22 @@ public abstract class Producto implements Serializable {
 	private int stock;
 	private LocalDate fecha_inicio;
 	private LocalDate fecha_final;
+	private int id_proveedor;
 	
 	//Contructores
 	
 	public Producto() {
-		this("","",0.0,0,null,null);
+		this("","",0.0,0,null,null,1);
 			
 	}
-	public Producto(String id, String nom, double preu, int stock,LocalDate fecha_inicio,LocalDate fecha_final) {
+	public Producto(String id, String nom, double preu, int stock,LocalDate fecha_inicio,LocalDate fecha_final,int id_proveedor) {
 		this.id = id;
 		this.nom = nom;
 		this.preu = preu;
 		this.stock=stock;
 		this.fecha_inicio=fecha_inicio;
 		this.fecha_final=fecha_final;
+		this.id_proveedor=id_proveedor;
 	}
 	
 	
@@ -87,7 +89,12 @@ public abstract class Producto implements Serializable {
 	}
 	
 	
-	
+	public int getId_proveedor() {
+		return id_proveedor;
+	}
+	public void setId_proveedor(int id_proveedor) {
+		this.id_proveedor = id_proveedor;
+	}
 	public void quitarStock(int stock) throws StockInsuficientException {
 		if(this.stock<stock) {
 			StockInsuficientException error= new StockInsuficientException("No hay suficiente Stock");
@@ -114,7 +121,7 @@ public abstract class Producto implements Serializable {
 	//Imprime los parametros de la clase productos.
 	public void imprimir() {
 		
-		System.out.println("ID: "+id+" Nombre: "+nom+" Precio: "+preu+"Stock: "+stock+" Fecha Inicio: "+fecha_inicio+" Fecha_final: "+fecha_final);
+		System.out.println("ID: "+id+" Nombre: "+nom+" Precio: "+preu+"Stock: "+stock+" Fecha Inicio: "+fecha_inicio+" Fecha_final: "+fecha_final+" Id proveedor: "+id_proveedor);
 	}
 	
 	

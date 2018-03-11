@@ -4,6 +4,7 @@ package controlador;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.TreeSet;
@@ -29,6 +30,7 @@ import modelo.*;
 public class ProductosController {
 
 	private Stage ventana;
+	@SuppressWarnings("unused")
 	private Connection conexionBD;
 	private Productos dao_productos=null;
 
@@ -92,7 +94,8 @@ public class ProductosController {
 
 	@FXML
 	private void initialize() throws IOException {
-
+		
+	
 		// Inyecto en el ComboBox dos Values.
 		tipoComboBox.getItems().addAll("Joc", "Pack");
 
@@ -108,8 +111,8 @@ public class ProductosController {
 		guardarButton.setDisable(true);
 		modificarButton.setDisable(true);
 
-		// Instancio el DAO Productos y cargo la persitencia de datos
-		dao_productos=new Productos(conexionBD);
+		
+		
 		
 
 	}
@@ -213,17 +216,30 @@ public class ProductosController {
 
 		// Inserta un nuevo producto al clicar en guardar
 
-		// Falta validar los datos si no validad lanzo alert
+		
 
 		if (tipoComboBox.getValue().equals("Joc")) {
 			
 			if(validator("Joc")) {
 				
+				
 				Joc juego = new Joc(idTextfield.getText(), nomTexfield.getText(),
 						Double.parseDouble(precioTextfield.getText()), Integer.parseInt(stockTexfield.getText()),
 						I_catalogoDatePicker.getValue(), f_catalogoDatePicker.getValue(),
 						Integer.parseInt(edadminimaTextfield.getText()), Integer.parseInt(proveedorTextField.getText()));
-				dao_productos.addProducto(juego);
+				try {
+					
+					dao_productos.addProducto(juego);
+				} catch (SQLException e) {
+					
+					Alert alert = new Alert(AlertType.ERROR);
+					alert.initOwner(ventana);
+					alert.setTitle("Error al guardar en la BD");
+					alert.setHeaderText("Error en el registro del juego");
+					alert.setContentText(e.getMessage());
+
+					alert.showAndWait();
+				}
 				
 			}
 
@@ -238,7 +254,18 @@ public class ProductosController {
 						I_catalogoDatePicker.getValue(), f_catalogoDatePicker.getValue(),
 						generateTreeSetfromString(listadejuegosTextfield.getText()),
 						Double.parseDouble(descuentoTextField.getText()));
-				dao_productos.addProducto(pack);
+				try {
+					dao_productos.addProducto(pack);
+				} catch (SQLException e) {
+					Alert alert = new Alert(AlertType.ERROR);
+					alert.initOwner(ventana);
+					alert.setTitle("Error al guardar en la BD");
+					alert.setHeaderText("Error en el registro del Pack");
+					alert.setContentText(e.getMessage());
+
+					alert.showAndWait();
+				
+				}
 				
 				
 				
@@ -300,7 +327,7 @@ public class ProductosController {
 
 		// Envio los datos al DAO y este sobreescribira los productos
 		if (value.equals("Joc")) {
-			// Falta validar los datos si no validad lanzo alert
+			
 			
 			if(validator("Joc")) {
 				Joc juego = new Joc(idTextfield.getText(), nomTexfield.getText(),
@@ -350,7 +377,9 @@ public class ProductosController {
 
 	}
 
-	// Metodos para cargar una ventana al controlador
+	//CONSTRUCT 
+	
+	
 	public Stage getVentana() {
 		return ventana;
 	}
@@ -359,16 +388,29 @@ public class ProductosController {
 		this.ventana = ventana;
 	}
 	
-	public void setConnection(Connection conexionBD) {
+	public void setConnection(Connection conexionBD) throws Exception {
 		this.conexionBD=conexionBD;
+		
+		if(conexionBD!=null) {
+			dao_productos=new Productos(conexionBD);
+		}else {
+			Exception error= new Exception("La conexion a la BD no se ha podido establecer desde el controlador");
+			throw error;
+		}
+		
 		
 	}
 
 	// Metodo que se ejecuta al salir de la aplicacion
 	public void salir() throws IOException {
 
-		// Guarda la estructura de datos en un fichero y cierra el escenario
-		
+		// Cierro la conexion de la BD y cierro la ventana
+		try {
+			dao_productos.closeDB();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
 		ventana.close();
 
 	}

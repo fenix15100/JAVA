@@ -20,6 +20,11 @@ import javafx.stage.WindowEvent;
 
 
 public class IniciBotonsController extends Application {
+	
+	
+	
+
+
 	//Cargo la traduccion en el controlador
 	private Locale localitzacioDisplay = Locale.getDefault(Category.DISPLAY);
 	private ResourceBundle texts = ResourceBundle.getBundle("vista.Texts", localitzacioDisplay);
@@ -34,23 +39,34 @@ public class IniciBotonsController extends Application {
 
     @FXML
     private Button btnSalir;
-
-	@Override
-	public void start(Stage escenarioPrincipal) throws Exception {
+    
+    
+	//COnstruct
+	public IniciBotonsController() {
+		super();
 		
 		try{
 			//Carregar el controlador per la BD PostgreSQL
 			Class.forName("org.postgresql.Driver");
 
 			//Establir la connexió amb la BD
-			String urlBaseDades = "jdbc:postgresql://192.168.123.31/botiga";
+			String urlBaseDades = "jdbc:postgresql://192.168.1.101/botiga";
 			String usuari = "postgres";
 			String contrasenya = "Destino20$";
 			conexionBD = DriverManager.getConnection(urlBaseDades , usuari, contrasenya);
+			if(conexionBD!=null) {
+				System.out.println("Conexion DB establecida");
+			}
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		
+		
+	}
+
+	@Override
+	public void start(Stage escenarioPrincipal) throws Exception {
 		
 		//Cargo la vista asociada al controlador Principal
 		FXMLLoader loaderview = new FXMLLoader(getClass().getResource("/vista/IniciBotonsView.fxml"));
@@ -66,8 +82,7 @@ public class IniciBotonsController extends Application {
 		escenarioPrincipal.setTitle(texts.getString("Inicio.title.botiga"));
 		escenarioPrincipal.show();
 		
-		
-
+	
 	}
 	
 	
@@ -91,10 +106,14 @@ public class IniciBotonsController extends Application {
 			escenarioProductos.setScene(escenaProductos);
 			escenarioProductos.show();
 			
-			//Le entrego el escenario a su controlador
+			//Le entrego el escenario a su controlador y le doy la conexion a la BD
 		
 			ProductosController productoControler = (ProductosController)loaderview.getController();
-			productoControler.setConnection(conexionBD);
+			try {
+				productoControler.setConnection(conexionBD);
+			} catch (Exception e1) {
+				System.out.println(e1.getMessage());
+			}
 			productoControler.setVentana(escenarioProductos);
 			
 		 
@@ -119,4 +138,17 @@ public class IniciBotonsController extends Application {
 		 Platform.exit();
 
 	 }
+	 
+	 @Override
+		public void stop() throws Exception {
+		
+			super.stop();
+			
+			try {
+				if (conexionBD != null) conexionBD.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+
 }

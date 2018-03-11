@@ -18,7 +18,7 @@ public final class Pack extends Producto {
 	
 	//Constructores
 	public Pack(String id, String nom, double preu,int stock,LocalDate fecha_inicio,LocalDate fecha_final,TreeSet<String> ListaJuegos,double descuento) {
-		super(id, nom, preu, stock,fecha_inicio,fecha_final);
+		super(id, nom, preu, stock,fecha_inicio,fecha_final,1);
 		this.ListaJuegos=ListaJuegos;
 		this.descuento=descuento;
 		
