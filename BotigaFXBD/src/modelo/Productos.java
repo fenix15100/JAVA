@@ -181,6 +181,9 @@ public class Productos {
 	//Estructura de datos el Producto
 	public void updateProducto(Producto productemp) {
 		
+		//String id=productemp.getId();
+		
+		
 		
 		
 		
