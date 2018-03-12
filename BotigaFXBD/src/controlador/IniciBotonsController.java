@@ -50,7 +50,7 @@ public class IniciBotonsController extends Application {
 			Class.forName("org.postgresql.Driver");
 
 			//Establir la connexió amb la BD
-			String urlBaseDades = "jdbc:postgresql://192.168.1.101/botiga";
+			String urlBaseDades = "jdbc:postgresql://192.168.123.31/botiga";
 			String usuari = "postgres";
 			String contrasenya = "Destino20$";
 			conexionBD = DriverManager.getConnection(urlBaseDades , usuari, contrasenya);

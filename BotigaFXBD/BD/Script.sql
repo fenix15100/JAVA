@@ -35,7 +35,7 @@ CREATE TABLE productes (
 		stock INT4,
 		fecha_inicio DATE,
 		fecha_final DATE,
-		tipo BPCHAR(1) NOT NULL
+		tipo TEXT NOT NULL
 	);
 
 CREATE TABLE jocs (
