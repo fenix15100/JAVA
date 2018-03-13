@@ -185,7 +185,7 @@ public class Productos {
 		if(productemp instanceof Joc) {
 			
 			Joc joc=(Joc)productemp;
-			sta=conexionBD.prepareStatement("UPDATE jocs SET idproducte=?,nom=?,preu=?,edat=?,idproveidor=?,stock=?,fecha_inicio=?,fecha_final=?,tipo=? WHERE idproducte=? ");
+			sta=conexionBD.prepareStatement("UPDATE jocs SET idproducte=?,nom=?,preu=?,edat=?,idproveidor=?,stock=?,fecha_inicio=?,fecha_final=?,tipo=? WHERE idproducte=?");
 			
 			sta.setString(1,joc.getId());
 			sta.setString(2, joc.getNom());
@@ -207,7 +207,7 @@ public class Productos {
 		}else if(productemp instanceof Pack) {
 			
 			Pack pack=(Pack)productemp;
-			sta=conexionBD.prepareStatement("UPDATE packs1 idproducte=?,nom=?,preu=?,porc_dto=?,idproveidor=?,jocs=?,stock=?,fecha_inicio=?,fecha_final=?,tipo=? WHERE idproducte=?) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+			sta=conexionBD.prepareStatement("UPDATE packs1 SET idproducte=?,nom=?,preu=?,porc_dto=?,idproveidor=?,jocs=?,stock=?,fecha_inicio=?,fecha_final=?,tipo=? WHERE idproducte=?");
 			sta.setString(1,pack.getId());
 			sta.setString(2, pack.getNom());
 			sta.setDouble(3, pack.getPreu());
