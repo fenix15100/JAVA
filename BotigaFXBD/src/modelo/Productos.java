@@ -179,9 +179,57 @@ public class Productos {
 	
 	//Recibe un Producto previamente modificado por la clase BotigaProductes y sobreescribe en la
 	//Estructura de datos el Producto
-	public void updateProducto(Producto productemp) {
+	public void updateProducto(Producto productemp) throws SQLException {
+		PreparedStatement sta=null;
 		
-		//String id=productemp.getId();
+		if(productemp instanceof Joc) {
+			
+			Joc joc=(Joc)productemp;
+			sta=conexionBD.prepareStatement("UPDATE jocs SET idproducte=?,nom=?,preu=?,edat=?,idproveidor=?,stock=?,fecha_inicio=?,fecha_final=?,tipo=? WHERE idproducte=? ");
+			
+			sta.setString(1,joc.getId());
+			sta.setString(2, joc.getNom());
+			sta.setDouble(3, joc.getPreu());
+			sta.setInt(4, joc.getEdad_minima());
+			sta.setInt(5, joc.getId_proveedor());
+			sta.setInt(6, joc.getStock());
+			sta.setDate(7, java.sql.Date.valueOf(joc.getFecha_inicio()));
+			sta.setDate(8, java.sql.Date.valueOf(joc.getFecha_final()));
+			sta.setString(9,"Joc");
+			sta.setString(10,joc.getId());
+			
+			sta.executeUpdate();
+			sta.close();
+			
+			
+			
+			
+		}else if(productemp instanceof Pack) {
+			
+			Pack pack=(Pack)productemp;
+			sta=conexionBD.prepareStatement("UPDATE packs1 idproducte=?,nom=?,preu=?,porc_dto=?,idproveidor=?,jocs=?,stock=?,fecha_inicio=?,fecha_final=?,tipo=? WHERE idproducte=?) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+			sta.setString(1,pack.getId());
+			sta.setString(2, pack.getNom());
+			sta.setDouble(3, pack.getPreu());
+			sta.setDouble(4, pack.getDescuento());
+			sta.setInt(5,pack.getId_proveedor());
+			
+			//Convierto el treset a array String y luego hago un array generica tipo Integer para
+			//meterla en el stament.
+			//https://stackoverflow.com/questions/17842211/how-to-use-an-arraylist-as-a-prepared-statement-parameter
+			
+			String[] lista_juegos_array=pack.getListaJuegos().toArray(new String[pack.getListaJuegos().size()]);
+			Array lista = conexionBD.createArrayOf("INTEGER", lista_juegos_array);
+			sta.setArray(6,lista );
+			sta.setInt(7, pack.getStock());
+			sta.setDate(8, java.sql.Date.valueOf(pack.getFecha_inicio()));
+			sta.setDate(9, java.sql.Date.valueOf(pack.getFecha_final()));
+			sta.setString(10,"Pack");
+			sta.setString(11,pack.getId());
+			sta.executeUpdate();
+			sta.close();
+			
+		}
 		
 		
 		
@@ -190,10 +238,16 @@ public class Productos {
 	}
 	
 	//Recibe un ID y los busca en la estructura de datos, si existe borra el producto
-	public boolean deleteProducto(String id){
+	public boolean deleteProducto(String id) throws SQLException{
 		
-		//implementar
-		return true;
+		PreparedStatement sta=conexionBD.prepareStatement("DELETE FROM productes where idproducte=?");
+		sta.setString(1, id);
+		if(sta.executeUpdate()==1) {
+			return true;
+		}else {
+			return false;
+		}
+		
 		
 		
 	}

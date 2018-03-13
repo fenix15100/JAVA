@@ -342,7 +342,17 @@ public class ProductosController {
 						Double.parseDouble(precioTextfield.getText()), Integer.parseInt(stockTexfield.getText()),
 						I_catalogoDatePicker.getValue(), f_catalogoDatePicker.getValue(),
 						Integer.parseInt(edadminimaTextfield.getText()), Integer.parseInt(proveedorTextField.getText()));
-				dao_productos.updateProducto(juego);
+				try {
+					dao_productos.updateProducto(juego);
+				} catch (SQLException e) {
+					Alert alert = new Alert(AlertType.ERROR);
+					alert.initOwner(ventana);
+					alert.setTitle("Error al Actualizar en la BD");
+					alert.setHeaderText("Error la modificacion del juego");
+					alert.setContentText(e.getMessage());
+
+					alert.showAndWait();
+				}
 				
 			}
 
@@ -356,8 +366,18 @@ public class ProductosController {
 						I_catalogoDatePicker.getValue(), f_catalogoDatePicker.getValue(),
 						generateTreeSetfromString(listadejuegosTextfield.getText()),
 						Double.parseDouble(descuentoTextField.getText()));
-				dao_productos.updateProducto(pack);
-				guardarButton.setDisable(false);
+				try {
+					dao_productos.updateProducto(pack);
+				} catch (SQLException e) {
+					Alert alert = new Alert(AlertType.ERROR);
+					alert.initOwner(ventana);
+					alert.setTitle("Error al Actualizar en la BD");
+					alert.setHeaderText("Error la modificacion del Pack");
+					alert.setContentText(e.getMessage());
+
+					alert.showAndWait();
+				}
+				
 				
 			}
 			
@@ -375,6 +395,7 @@ public class ProductosController {
 		datosTabpane.setDisable(true);
 		guardarButton.setDisable(true);
 		modificarButton.setDisable(true);
+		eliminarButton.setDisable(true);
 
 	}
 	
@@ -383,10 +404,30 @@ public class ProductosController {
 	@FXML
 	private void OnActioneliminarButton(ActionEvent event) {
 		
-		//Implementar 
-		//cojer la ID de un registro existente y mandarselo al DAO 
 		
-		//dao_productos.deleteProducto(id)
+		try {
+			dao_productos.deleteProducto(idTextfield.getText());
+		} catch (SQLException e) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.initOwner(ventana);
+			alert.setTitle("Error al borrar el registro en la BD");
+			alert.setHeaderText("Error al borrar el registro en la BD");
+			alert.setContentText(e.getMessage());
+
+			alert.showAndWait();
+		}
+		
+		limpiarFormulario();
+		nomTexfield.setDisable(true);
+		stockTexfield.setDisable(true);
+		I_catalogoDatePicker.setDisable(true);
+		f_catalogoDatePicker.setDisable(true);
+		tipoComboBox.setDisable(true);
+		precioTextfield.setDisable(true);
+		datosTabpane.setDisable(true);
+		guardarButton.setDisable(true);
+		modificarButton.setDisable(true);
+		eliminarButton.setDisable(true);
 		
 		
 		
