@@ -10,6 +10,6 @@
       <Button fx:id="btnchosse" layoutX="399.0" layoutY="63.0" mnemonicParsing="false" onAction="#chosse" prefHeight="25.0" prefWidth="136.0" text="Examinar" />
       <Label fx:id="label" layoutX="99.0" layoutY="67.0" prefHeight="25.0" prefWidth="282.0" />
       <TextArea fx:id="console" layoutX="31.0" layoutY="171.0" prefHeight="282.0" prefWidth="534.0" />
-      <Button fx:id="btncarga" layoutX="429.0" layoutY="460.0" mnemonicParsing="false" onAction="#cargar" prefHeight="25.0" prefWidth="136.0" text="Examinar" />
+      <Button fx:id="btncarga" layoutX="429.0" layoutY="460.0" mnemonicParsing="false" onAction="#cargar" prefHeight="25.0" prefWidth="136.0" text="Cargar" />
    </children>
 </AnchorPane>

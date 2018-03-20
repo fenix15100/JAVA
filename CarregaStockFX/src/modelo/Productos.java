@@ -15,7 +15,7 @@ import java.util.TreeSet;
 
 public class Productos {
 	
-	private Connection conexionBD;
+	public Connection conexionBD;
 	
 	public Productos(Connection conexionBD) {
 		this.conexionBD=conexionBD;
@@ -251,6 +251,8 @@ public class Productos {
 		
 		
 	}
+	
+	
 	
 	
 	
