@@ -1,4 +1,5 @@
 package controlador;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -14,14 +15,22 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import modelo.Productos;
 
 public class CargaStockController extends Application {
 
+
+	@FXML
+	private AnchorPane root;
 	
 	@FXML
 	private Button btnchosse;
+	
+	@FXML
+	private Button btncarga;
 	 	
 	@FXML
 	private Label label;
@@ -82,6 +91,21 @@ public class CargaStockController extends Application {
 				
 	}
 	
+	@FXML
+	public void chosse(ActionEvent event) {
+		
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Nom del fitxer a importar");
+		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+		fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT", "*.txt"));
+		File file = fileChooser.showOpenDialog(root.getScene().getWindow());
+		
+		label.setText(file.getAbsolutePath());
+		
+		
+		
+	}
+	
 	
 	 @FXML
 	 public void cargar(ActionEvent event) {
@@ -95,19 +119,11 @@ public class CargaStockController extends Application {
 		    
 		 System.setOut(new PrintStream(out, true));
 		 
-		
-		 
-		 
-		 
-		    
-		    
-		    
-		    
-		    
-		    
-		  
+			  
 		 
 	}
+	 
+	
 	 
 	 
 	 
