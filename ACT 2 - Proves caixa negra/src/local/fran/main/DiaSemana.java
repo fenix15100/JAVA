@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class DiaSemana {
 	
 	
-	public  static String getDiaSemana(int dia, int mes, int ano) {
+	public  String getDiaSemana(int dia, int mes, int ano) {
 		
 		
 		try {
@@ -16,25 +16,25 @@ public class DiaSemana {
 			switch (fecha.getDayOfWeek().toString()) {
 			case "SUNDAY":
 				
-				return "Domingo";
+				return "DOMINGO";
 			case "MONDAY":
 				
-				return "Lunes";
+				return "LUNES";
 			case "TUESDAY":
 				
-				return "Martes";
+				return "MARTES";
 			case "WEDNESDAY":
 				
-				return "Miercoles";
+				return "MIERCOLES";
 			case "THURSDAY":
 				
-				return "Jueves";
+				return "JUEVES";
 			case "FRIDAY":
 				
-				return "Viernes";
+				return "VIERNES";
 					
 			case "SATURDAY":
-				return "Sabado";
+				return "SABADO";
 			
 			default:
 				return " ";
@@ -43,7 +43,7 @@ public class DiaSemana {
 				
 			
 		}catch (DateTimeException e) {
-			return "ERROR "+e.getMessage();
+			return "ERROR";
 		}
 		 	
 		
