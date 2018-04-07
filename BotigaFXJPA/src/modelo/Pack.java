@@ -3,16 +3,27 @@ package modelo;
 import java.time.LocalDate;
 import java.util.TreeSet;
 
-public final class Pack extends Producto {
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Table;
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name="Packs")
+public class Pack extends Producto {
 	
 	
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	
 	//Parametros de Clase
+	@ElementCollection(fetch=FetchType.EAGER)
 	private TreeSet<String> ListaJuegos=new TreeSet<String>();
+	@Column
 	private double descuento;
 
 	

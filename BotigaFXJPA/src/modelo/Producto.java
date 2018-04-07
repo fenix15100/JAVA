@@ -3,8 +3,20 @@ package modelo;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import modelo.StockInsuficientException;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
+import org.eclipse.persistence.annotations.CascadeOnDelete;
+
+
+@Entity
+@Table(name="Productes")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Producto implements Serializable {
 	
 	 //Parametros de clase
@@ -13,11 +25,18 @@ public abstract class Producto implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@CascadeOnDelete
+	@GeneratedValue
 	private String id;
 	private String nom;
 	private double preu;
 	private int stock;
+	
+	@Column(columnDefinition = "DATE")
 	private LocalDate fecha_inicio;
+	@Column(columnDefinition = "DATE")
 	private LocalDate fecha_final;
 	private int id_proveedor;
 	
@@ -27,6 +46,7 @@ public abstract class Producto implements Serializable {
 		this("","",0.0,0,null,null,1);
 			
 	}
+	
 	public Producto(String id, String nom, double preu, int stock,LocalDate fecha_inicio,LocalDate fecha_final,int id_proveedor) {
 		this.id = id;
 		this.nom = nom;

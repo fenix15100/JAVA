@@ -2,14 +2,23 @@ package modelo;
 
 import java.time.LocalDate;
 
-public final class Joc extends Producto{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name="Jocs")
+public class Joc extends Producto{
 	
 	//Parametros de clase
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	@Column
 	private int edad_minima;
 	
 	
