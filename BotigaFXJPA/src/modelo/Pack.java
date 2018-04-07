@@ -20,7 +20,7 @@ public class Pack extends Producto {
 	 * 
 	 */
 	
-	//Parametros de Clase
+	
 	@ElementCollection(fetch=FetchType.EAGER)
 	private TreeSet<String> ListaJuegos=new TreeSet<String>();
 	@Column
