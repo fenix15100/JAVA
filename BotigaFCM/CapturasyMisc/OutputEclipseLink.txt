@@ -1,0 +1,164 @@
+[EL Fine]: server: Configured server platform: org.eclipse.persistence.platform.server.NoServerPlatform
+[EL Config]: metadata: The access type for the persistent class [class modelFCM.AdrecaFCM] is set to [FIELD].
+[EL Config]: metadata: The access type for the persistent class [class modelFCM.ArticleFCM] is set to [FIELD].
+[EL Config]: metadata: The access type for the persistent class [class modelFCM.BotigaFCM] is set to [FIELD].
+[EL Config]: metadata: The target entity (reference) class for the one to one mapping element [field adreca] is being defaulted to: class modelFCM.AdrecaFCM.
+[EL Config]: metadata: The target entity (reference) class for the one to many mapping element [field comandesVenda] is being defaulted to: class modelFCM.ComandaVendaFCM.
+[EL Config]: metadata: The target entity (reference) class for the one to many mapping element [field articles] is being defaulted to: class modelFCM.ArticleFCM.
+[EL Config]: metadata: The access type for the persistent class [class modelFCM.ComandaVendaFCM] is set to [FIELD].
+[EL Config]: metadata: The target entity (reference) class for the one to many mapping element [field linies] is being defaulted to: class modelFCM.ComandaVendaLineaFCM.
+[EL Config]: metadata: The target entity (reference) class for the one to one mapping element [field client] is being defaulted to: class modelFCM.ClientFCM.
+[EL Config]: metadata: The access type for the persistent class [class modelFCM.PersonaFCM] is set to [FIELD].
+[EL Config]: metadata: The target class (reference) class for the element collection mapping element [field telefons] is being defaulted to: class java.lang.String.
+[EL Config]: metadata: The access type for the persistent class [class modelFCM.ClientFCM] is set to [FIELD].
+[EL Config]: metadata: The element [field adreces] is being defaulted to a one to many mapping.
+[EL Config]: metadata: The target entity (reference) class for the one to many mapping element [field adreces] is being defaulted to: class modelFCM.AdrecaFCM.
+[EL Config]: metadata: The access type for the persistent class [class modelFCM.ComandaVendaLineaFCM] is set to [FIELD].
+[EL Config]: metadata: The target entity (reference) class for the one to one mapping element [field article] is being defaulted to: class modelFCM.ArticleFCM.
+[EL Config]: metadata: The alias name for the entity class [class modelFCM.AdrecaFCM] is being defaulted to: AdrecaFCM.
+[EL Config]: metadata: The table name for entity [class modelFCM.AdrecaFCM] is being defaulted to: ADRECAFCM.
+[EL Config]: metadata: The column name for element [poblacio] is being defaulted to: POBLACIO.
+[EL Config]: metadata: The column name for element [domicili] is being defaulted to: DOMICILI.
+[EL Config]: metadata: The column name for element [idadreca] is being defaulted to: IDADRECA.
+[EL Config]: metadata: The column name for element [provinca] is being defaulted to: PROVINCA.
+[EL Config]: metadata: The column name for element [cp] is being defaulted to: CP.
+[EL Config]: metadata: The alias name for the entity class [class modelFCM.ArticleFCM] is being defaulted to: ArticleFCM.
+[EL Config]: metadata: The table name for entity [class modelFCM.ArticleFCM] is being defaulted to: ARTICLEFCM.
+[EL Config]: metadata: The column name for element [idarticle] is being defaulted to: IDARTICLE.
+[EL Config]: metadata: The column name for element [preu_venda] is being defaulted to: PREU_VENDA.
+[EL Config]: metadata: The column name for element [stock] is being defaulted to: STOCK.
+[EL Config]: metadata: The column name for element [nom] is being defaulted to: NOM.
+[EL Config]: metadata: The alias name for the entity class [class modelFCM.BotigaFCM] is being defaulted to: BotigaFCM.
+[EL Config]: metadata: The table name for entity [class modelFCM.BotigaFCM] is being defaulted to: BOTIGAFCM.
+[EL Config]: metadata: The column name for element [idbotiga] is being defaulted to: IDBOTIGA.
+[EL Config]: metadata: The column name for element [num_treballadors] is being defaulted to: NUM_TREBALLADORS.
+[EL Config]: metadata: The column name for element [nom] is being defaulted to: NOM.
+[EL Config]: metadata: The alias name for the entity class [class modelFCM.ComandaVendaFCM] is being defaulted to: ComandaVendaFCM.
+[EL Config]: metadata: The table name for entity [class modelFCM.ComandaVendaFCM] is being defaulted to: COMANDAVENDAFCM.
+[EL Config]: metadata: The column name for element [data_entrega] is being defaulted to: DATA_ENTREGA.
+[EL Config]: metadata: The column name for element [idcomanda] is being defaulted to: IDCOMANDA.
+[EL Config]: metadata: The column name for element [importe] is being defaulted to: IMPORTE.
+[EL Config]: metadata: The alias name for the entity class [class modelFCM.ClientFCM] is being defaulted to: ClientFCM.
+[EL Config]: metadata: The alias name for the entity class [class modelFCM.PersonaFCM] is being defaulted to: PersonaFCM.
+[EL Config]: metadata: The table name for entity [class modelFCM.PersonaFCM] is being defaulted to: PERSONAFCM.
+[EL Config]: metadata: The discriminator column name for the root inheritance class [modelFCM.PersonaFCM] is being defaulted to: DTYPE.
+[EL Config]: metadata: The column name for element [idpersona] is being defaulted to: IDPERSONA.
+[EL Config]: metadata: The column name for element [nom] is being defaulted to: NOM.
+[EL Config]: metadata: The column name for element [dni] is being defaulted to: DNI.
+[EL Config]: metadata: The table name for entity [class modelFCM.ClientFCM] is being defaulted to: CLIENTFCM.
+[EL Config]: metadata: The primary key column name for the inheritance class [class modelFCM.ClientFCM] is being defaulted to: IDPERSONA.
+[EL Config]: metadata: The foreign key column name for the inheritance class [modelFCM.ClientFCM] is being defaulted to: IDPERSONA.
+[EL Config]: metadata: The column name for element [enviar_publicitat] is being defaulted to: ENVIAR_PUBLICITAT.
+[EL Config]: metadata: The alias name for the entity class [class modelFCM.ComandaVendaLineaFCM] is being defaulted to: ComandaVendaLineaFCM.
+[EL Config]: metadata: The table name for entity [class modelFCM.ComandaVendaLineaFCM] is being defaulted to: COMANDAVENDALINEAFCM.
+[EL Config]: metadata: The column name for element [idlinea] is being defaulted to: IDLINEA.
+[EL Config]: metadata: The column name for element [descripcio] is being defaulted to: DESCRIPCIO.
+[EL Config]: metadata: The column name for element [quantitat] is being defaulted to: QUANTITAT.
+[EL Config]: metadata: The column name for element [preu] is being defaulted to: PREU.
+[EL Config]: metadata: The column name for element [importe] is being defaulted to: IMPORTE.
+[EL Config]: metadata: The collection table name for the basic collection/map mapping [field telefons] is being defaulted to: PersonaFCM_TELEFONS.
+[EL Config]: metadata: The primary key column name for the mapping element [field telefons] is being defaulted to: IDPERSONA.
+[EL Config]: metadata: The foreign key column name for the mapping element [telefons] is being defaulted to: PersonaFCM_IDPERSONA.
+[EL Config]: metadata: The value column name for the basic collection/map mapping element mapping element [telefons] is being defaulted to: TELEFONS.
+[EL Config]: metadata: The primary key column name for the mapping element [field adreca] is being defaulted to: IDADRECA.
+[EL Config]: metadata: The join table name for the many to many mapping [field comandesVenda] is being defaulted to: BOTIGAFCM_COMANDAVENDAFCM.
+[EL Config]: metadata: The source primary key column name for the many to many mapping [field comandesVenda] is being defaulted to: IDBOTIGA.
+[EL Config]: metadata: The source foreign key column name for the many to many mapping [comandesVenda] is being defaulted to: BotigaFCM_IDBOTIGA.
+[EL Config]: metadata: The target primary key column name for the many to many mapping [field comandesVenda] is being defaulted to: IDCOMANDA.
+[EL Config]: metadata: The target foreign key column name for the many to many mapping [comandesVenda] is being defaulted to: comandesVenda_IDCOMANDA.
+[EL Config]: metadata: The join table name for the many to many mapping [field articles] is being defaulted to: BOTIGAFCM_ARTICLEFCM.
+[EL Config]: metadata: The source primary key column name for the many to many mapping [field articles] is being defaulted to: IDBOTIGA.
+[EL Config]: metadata: The source foreign key column name for the many to many mapping [articles] is being defaulted to: BotigaFCM_IDBOTIGA.
+[EL Config]: metadata: The target primary key column name for the many to many mapping [field articles] is being defaulted to: IDARTICLE.
+[EL Config]: metadata: The target foreign key column name for the many to many mapping [articles] is being defaulted to: articles_IDARTICLE.
+[EL Config]: metadata: The join table name for the many to many mapping [field linies] is being defaulted to: COMANDAVENDAFCM_COMANDAVENDALINEAFCM.
+[EL Config]: metadata: The source primary key column name for the many to many mapping [field linies] is being defaulted to: IDCOMANDA.
+[EL Config]: metadata: The source foreign key column name for the many to many mapping [linies] is being defaulted to: ComandaVendaFCM_IDCOMANDA.
+[EL Config]: metadata: The target primary key column name for the many to many mapping [field linies] is being defaulted to: IDLINEA.
+[EL Config]: metadata: The target foreign key column name for the many to many mapping [linies] is being defaulted to: linies_IDLINEA.
+[EL Config]: metadata: The primary key column name for the mapping element [field client] is being defaulted to: IDPERSONA.
+[EL Config]: metadata: The foreign key column name for the mapping element [client] is being defaulted to: CLIENT_IDPERSONA.
+[EL Config]: metadata: The join table name for the many to many mapping [field adreces] is being defaulted to: CLIENTFCM_ADRECAFCM.
+[EL Config]: metadata: The source primary key column name for the many to many mapping [field adreces] is being defaulted to: IDPERSONA.
+[EL Config]: metadata: The source foreign key column name for the many to many mapping [adreces] is being defaulted to: ClientFCM_IDPERSONA.
+[EL Config]: metadata: The target primary key column name for the many to many mapping [field adreces] is being defaulted to: IDADRECA.
+[EL Config]: metadata: The target foreign key column name for the many to many mapping [adreces] is being defaulted to: adreces_IDADRECA.
+[EL Config]: metadata: The primary key column name for the mapping element [field article] is being defaulted to: IDARTICLE.
+[EL Info]: EclipseLink, version: Eclipse Persistence Services - 2.7.1.v20171221-bd47e8f
+[EL Fine]: connection: Detected database platform: org.eclipse.persistence.platform.database.PostgreSQLPlatform
+[EL Config]: connection: Connection(1835777333)--connecting(DatabaseLogin(
+	platform=>PostgreSQLPlatform
+	user name=> "postgres"
+	datasource URL=> "jdbc:postgresql://192.168.123.31:5432/botigafcm"
+))
+[EL Config]: connection: Connection(1549623669)--Connected: jdbc:postgresql://192.168.123.31:5432/botigafcm
+	User: postgres
+	Database: PostgreSQL  Version: 9.4.10
+	Driver: PostgreSQL JDBC Driver  Version: 42.2.1
+[EL Config]: connection: Connection(1967434886)--connecting(DatabaseLogin(
+	platform=>PostgreSQLPlatform
+	user name=> "postgres"
+	datasource URL=> "jdbc:postgresql://192.168.123.31:5432/botigafcm"
+))
+[EL Config]: connection: Connection(992457879)--Connected: jdbc:postgresql://192.168.123.31:5432/botigafcm
+	User: postgres
+	Database: PostgreSQL  Version: 9.4.10
+	Driver: PostgreSQL JDBC Driver  Version: 42.2.1
+[EL Info]: connection: /file:/C:/GIT/JAVA/BotigaFCM/build/classes/_BotigaFCM_url=jdbc:postgresql://192.168.123.31:5432/botigafcm_user=postgres login successful
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE BOTIGAFCM DROP CONSTRAINT FK_BOTIGAFCM_idadreça
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE CLIENTFCM DROP CONSTRAINT FK_CLIENTFCM_IDPERSONA
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE COMANDAVENDAFCM DROP CONSTRAINT FK_COMANDAVENDAFCM_CLIENT_IDPERSONA
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE COMANDAVENDALINEAFCM DROP CONSTRAINT FK_COMANDAVENDALINEAFCM_idarticle
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE BOTIGAFCM_ARTICLEFCM DROP CONSTRAINT FK_BOTIGAFCM_ARTICLEFCM_articles_IDARTICLE
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE BOTIGAFCM_ARTICLEFCM DROP CONSTRAINT FK_BOTIGAFCM_ARTICLEFCM_BotigaFCM_IDBOTIGA
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE BOTIGAFCM_COMANDAVENDAFCM DROP CONSTRAINT FK_BOTIGAFCM_COMANDAVENDAFCM_BotigaFCM_IDBOTIGA
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE BOTIGAFCM_COMANDAVENDAFCM DROP CONSTRAINT FK_BOTIGAFCM_COMANDAVENDAFCM_comandesVenda_IDCOMANDA
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE CLIENTFCM_ADRECAFCM DROP CONSTRAINT FK_CLIENTFCM_ADRECAFCM_ClientFCM_IDPERSONA
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE CLIENTFCM_ADRECAFCM DROP CONSTRAINT FK_CLIENTFCM_ADRECAFCM_adreces_IDADRECA
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE COMANDAVENDAFCM_COMANDAVENDALINEAFCM DROP CONSTRAINT FK_COMANDAVENDAFCM_COMANDAVENDALINEAFCM_linies_IDLINEA
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE COMANDAVENDAFCM_COMANDAVENDALINEAFCM DROP CONSTRAINT COMANDAVENDAFCM_COMANDAVENDALINEAFCM_ComandaVendaFCM_IDCOMANDA
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE PersonaFCM_TELEFONS DROP CONSTRAINT FK_PersonaFCM_TELEFONS_PersonaFCM_IDPERSONA
+[EL Fine]: sql: Connection(1549623669)--DROP TABLE BOTIGAFCM CASCADE
+[EL Fine]: sql: Connection(1549623669)--DROP TABLE ADRECAFCM CASCADE
+[EL Fine]: sql: Connection(1549623669)--DROP TABLE ARTICLEFCM CASCADE
+[EL Fine]: sql: Connection(1549623669)--DROP TABLE PERSONAFCM CASCADE
+[EL Fine]: sql: Connection(1549623669)--DROP TABLE CLIENTFCM CASCADE
+[EL Fine]: sql: Connection(1549623669)--DROP TABLE COMANDAVENDAFCM CASCADE
+[EL Fine]: sql: Connection(1549623669)--DROP TABLE COMANDAVENDALINEAFCM CASCADE
+[EL Fine]: sql: Connection(1549623669)--DROP TABLE BOTIGAFCM_ARTICLEFCM CASCADE
+[EL Fine]: sql: Connection(1549623669)--DROP TABLE BOTIGAFCM_COMANDAVENDAFCM CASCADE
+[EL Fine]: sql: Connection(1549623669)--DROP TABLE CLIENTFCM_ADRECAFCM CASCADE
+[EL Fine]: sql: Connection(1549623669)--DROP TABLE COMANDAVENDAFCM_COMANDAVENDALINEAFCM CASCADE
+[EL Fine]: sql: Connection(1549623669)--DROP TABLE PersonaFCM_TELEFONS CASCADE
+[EL Fine]: sql: Connection(1549623669)--CREATE TABLE BOTIGAFCM (IDBOTIGA INTEGER NOT NULL, NOM VARCHAR(255), NUM_TREBALLADORS INTEGER, idadreça INTEGER, PRIMARY KEY (IDBOTIGA))
+[EL Fine]: sql: Connection(1549623669)--CREATE TABLE ADRECAFCM (IDADRECA INTEGER NOT NULL, CP VARCHAR(255), DOMICILI VARCHAR(255), POBLACIO VARCHAR(255), PROVINCA VARCHAR(255), PRIMARY KEY (IDADRECA))
+[EL Fine]: sql: Connection(1549623669)--CREATE TABLE ARTICLEFCM (IDARTICLE INTEGER NOT NULL, NOM VARCHAR(255), PREU_VENDA FLOAT, STOCK INTEGER, PRIMARY KEY (IDARTICLE))
+[EL Fine]: sql: Connection(1549623669)--CREATE TABLE PERSONAFCM (IDPERSONA INTEGER NOT NULL, DTYPE VARCHAR(31), DNI VARCHAR(255), NOM VARCHAR(255), PRIMARY KEY (IDPERSONA))
+[EL Fine]: sql: Connection(1549623669)--CREATE TABLE CLIENTFCM (IDPERSONA INTEGER NOT NULL, ENVIAR_PUBLICITAT BOOLEAN, PRIMARY KEY (IDPERSONA))
+[EL Fine]: sql: Connection(1549623669)--CREATE TABLE COMANDAVENDAFCM (IDCOMANDA INTEGER NOT NULL, DATA_ENTREGA DATE, IMPORTE FLOAT, CLIENT_IDPERSONA INTEGER, PRIMARY KEY (IDCOMANDA))
+[EL Fine]: sql: Connection(1549623669)--CREATE TABLE COMANDAVENDALINEAFCM (IDLINEA INTEGER NOT NULL, DESCRIPCIO VARCHAR(255), IMPORTE FLOAT, PREU FLOAT, QUANTITAT INTEGER, idarticle INTEGER, PRIMARY KEY (IDLINEA))
+[EL Fine]: sql: Connection(1549623669)--CREATE TABLE BOTIGAFCM_ARTICLEFCM (BotigaFCM_IDBOTIGA INTEGER NOT NULL, articles_IDARTICLE INTEGER NOT NULL, PRIMARY KEY (BotigaFCM_IDBOTIGA, articles_IDARTICLE))
+[EL Fine]: sql: Connection(1549623669)--CREATE TABLE BOTIGAFCM_COMANDAVENDAFCM (BotigaFCM_IDBOTIGA INTEGER NOT NULL, comandesVenda_IDCOMANDA INTEGER NOT NULL, PRIMARY KEY (BotigaFCM_IDBOTIGA, comandesVenda_IDCOMANDA))
+[EL Fine]: sql: Connection(1549623669)--CREATE TABLE CLIENTFCM_ADRECAFCM (ClientFCM_IDPERSONA INTEGER NOT NULL, adreces_IDADRECA INTEGER NOT NULL, PRIMARY KEY (ClientFCM_IDPERSONA, adreces_IDADRECA))
+[EL Fine]: sql: Connection(1549623669)--CREATE TABLE COMANDAVENDAFCM_COMANDAVENDALINEAFCM (ComandaVendaFCM_IDCOMANDA INTEGER NOT NULL, linies_IDLINEA INTEGER NOT NULL, PRIMARY KEY (ComandaVendaFCM_IDCOMANDA, linies_IDLINEA))
+[EL Fine]: sql: Connection(1549623669)--CREATE TABLE PersonaFCM_TELEFONS (PersonaFCM_IDPERSONA INTEGER, TELEFONS VARCHAR(255))
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE BOTIGAFCM ADD CONSTRAINT FK_BOTIGAFCM_idadreça FOREIGN KEY (idadreça) REFERENCES ADRECAFCM (IDADRECA)
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE CLIENTFCM ADD CONSTRAINT FK_CLIENTFCM_IDPERSONA FOREIGN KEY (IDPERSONA) REFERENCES PERSONAFCM (IDPERSONA)
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE COMANDAVENDAFCM ADD CONSTRAINT FK_COMANDAVENDAFCM_CLIENT_IDPERSONA FOREIGN KEY (CLIENT_IDPERSONA) REFERENCES PERSONAFCM (IDPERSONA)
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE COMANDAVENDALINEAFCM ADD CONSTRAINT FK_COMANDAVENDALINEAFCM_idarticle FOREIGN KEY (idarticle) REFERENCES ARTICLEFCM (IDARTICLE)
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE BOTIGAFCM_ARTICLEFCM ADD CONSTRAINT FK_BOTIGAFCM_ARTICLEFCM_articles_IDARTICLE FOREIGN KEY (articles_IDARTICLE) REFERENCES ARTICLEFCM (IDARTICLE)
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE BOTIGAFCM_ARTICLEFCM ADD CONSTRAINT FK_BOTIGAFCM_ARTICLEFCM_BotigaFCM_IDBOTIGA FOREIGN KEY (BotigaFCM_IDBOTIGA) REFERENCES BOTIGAFCM (IDBOTIGA)
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE BOTIGAFCM_COMANDAVENDAFCM ADD CONSTRAINT FK_BOTIGAFCM_COMANDAVENDAFCM_BotigaFCM_IDBOTIGA FOREIGN KEY (BotigaFCM_IDBOTIGA) REFERENCES BOTIGAFCM (IDBOTIGA)
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE BOTIGAFCM_COMANDAVENDAFCM ADD CONSTRAINT FK_BOTIGAFCM_COMANDAVENDAFCM_comandesVenda_IDCOMANDA FOREIGN KEY (comandesVenda_IDCOMANDA) REFERENCES COMANDAVENDAFCM (IDCOMANDA)
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE CLIENTFCM_ADRECAFCM ADD CONSTRAINT FK_CLIENTFCM_ADRECAFCM_ClientFCM_IDPERSONA FOREIGN KEY (ClientFCM_IDPERSONA) REFERENCES PERSONAFCM (IDPERSONA)
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE CLIENTFCM_ADRECAFCM ADD CONSTRAINT FK_CLIENTFCM_ADRECAFCM_adreces_IDADRECA FOREIGN KEY (adreces_IDADRECA) REFERENCES ADRECAFCM (IDADRECA)
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE COMANDAVENDAFCM_COMANDAVENDALINEAFCM ADD CONSTRAINT FK_COMANDAVENDAFCM_COMANDAVENDALINEAFCM_linies_IDLINEA FOREIGN KEY (linies_IDLINEA) REFERENCES COMANDAVENDALINEAFCM (IDLINEA)
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE COMANDAVENDAFCM_COMANDAVENDALINEAFCM ADD CONSTRAINT COMANDAVENDAFCM_COMANDAVENDALINEAFCM_ComandaVendaFCM_IDCOMANDA FOREIGN KEY (ComandaVendaFCM_IDCOMANDA) REFERENCES COMANDAVENDAFCM (IDCOMANDA)
+[EL Fine]: sql: Connection(1549623669)--ALTER TABLE PersonaFCM_TELEFONS ADD CONSTRAINT FK_PersonaFCM_TELEFONS_PersonaFCM_IDPERSONA FOREIGN KEY (PersonaFCM_IDPERSONA) REFERENCES PERSONAFCM (IDPERSONA)
+[EL Fine]: sql: Connection(1549623669)--DELETE FROM SEQUENCE WHERE SEQ_NAME = 'SEQ_GEN'
+[EL Fine]: sql: Connection(1549623669)--SELECT * FROM SEQUENCE WHERE SEQ_NAME = 'SEQ_GEN'
+[EL Fine]: sql: Connection(1549623669)--INSERT INTO SEQUENCE(SEQ_NAME, SEQ_COUNT) values ('SEQ_GEN', 0)
+[EL Config]: connection: Connection(1549623669)--disconnect
+[EL Info]: connection: /file:/C:/GIT/JAVA/BotigaFCM/build/classes/_BotigaFCM_url=jdbc:postgresql://192.168.123.31:5432/botigafcm_user=postgres logout successful
+[EL Config]: connection: Connection(1835777333)--disconnect
+[EL Config]: connection: Connection(992457879)--disconnect
