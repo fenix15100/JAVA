@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="lib/postgresql-42.2.1.jar"/>
 	<classpathentry kind="lib" path="lib/eclipselink.jar"/>
@@ -13,5 +12,10 @@
 	<classpathentry kind="lib" path="lib/org.eclipse.persistence.extension_2.7.1.v20171221-bd47e8f.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.persistence.jpa.modelgen_2.7.1.v20171221-bd47e8f.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.persistence.jpars_2.7.1.v20171221-bd47e8f.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_101">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
