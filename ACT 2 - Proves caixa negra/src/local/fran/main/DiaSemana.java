@@ -16,10 +16,10 @@ public class DiaSemana {
 			switch (fecha.getDayOfWeek().toString()) {
 			case "SUNDAY":
 				
-				return "DOMINGO";
+				return "MARTES";
 			case "MONDAY":
 				
-				return "LUNES";
+				return "DOMINGO";
 			case "TUESDAY":
 				
 				return "MARTES";
